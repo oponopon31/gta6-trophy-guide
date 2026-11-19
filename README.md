@@ -11,7 +11,7 @@ An offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Au
 Open `app/index.html` in desktop Chrome with the network off and it just works — plain static files, no build step, no account, no network request. Serve it with any static server (`node serve.ts`, then http://localhost:8080) or open the file directly.
 
 - **Every trophy, official data first.** All 55 trophies with the official name, description and grade exactly as PlayStation publishes them (Exophase and PSNProfiles agree on all 55), plus a guide in my own words for each one. Every guide names its sources beside it — the official list for the name/description/grade, and PowerPyx's launch-week GTA 6 Trophy Guide &amp; Roadmap for the how-to steps and counts.
-- **A real tracker.** Tick trophies off and progress saves in the browser (localStorage). Export your progress to a JSON file and import it back, reset when you want a fresh run. Search by name or mission, filter by kind (story, missable, collectibles, activities, crime, side quests, money, online) and by grade, or show remaining/earned only.
+- **A real tracker.** Tick trophies off and progress saves in the browser (localStorage). Export your progress to a JSON file and import it back, reset when you want a fresh run. Search by name or mission, filter by kind (story, missable, collectibles, activities, crime, side quests, money, explore, misc) and by grade, or show remaining/earned only. Shareable URL parameters (`?seed=…&open=…&spoiler=on`) pre-fill progress and open a guide.
 - **Spoiler setting.** Turn on "Hide story spoilers" and every story trophy you have not earned yet hides its name and description until you earn it.
 - **Roadmap to the Platinum.** A three-step plan built from the official descriptions — story (60–80 h), the 100% checklist (~100 h), then Strangers &amp; Freaks and cleanup (~10 h), about 200 hours in one playthrough, difficulty 4/10, no online trophies.
 - **Missables, flagged honestly.** Exactly one trophy is potentially missable — Positive Mental Attitude, whose Chapter 1 balcony meditation may be required — with the exact steps and the manual-save safety net. The other 54 can all be earned after the story in free-roam. Four trophies whose method no launch-week guide has confirmed yet (In The Beginning…, Bad Luck, I Guess, The Truth Is Out There, Ten Pin) are marked unconfirmed in their guides, with the description-based reading labelled as inference, not fact.
@@ -22,7 +22,7 @@ Open `app/index.html` in desktop Chrome with the network off and it just works �
 - `app/index.html`, `app/app.js`, `app/style.css` — the app (ES module, CSS, no libraries).
 - `app/data/trophies.json` — the 55 trophies: official name/description/grade, hidden flag, kind, missable flag, target count, my guide, and a sources list per trophy.
 - `main.ts` — hands the entry in: copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with the vendored make.fun library.
-- `screenshots/` — four renders of the app taken in headless Chrome.
+- `screenshots/` — four renders of the app taken in headless Chrome; `shots.json` records the URL and viewport each one was taken from.
 
 ## Verify it yourself
 

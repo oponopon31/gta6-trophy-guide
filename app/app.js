@@ -41,6 +41,7 @@ function hiddenBySpoiler(t) { return spoiler && isStory(t) && !earned.has(t.name
 function gradeLabel(t) { return t.grade[0].toUpperCase() + t.grade.slice(1); }
 function kindLabel(t) {
   if (t.kind === 'platinum') return 'Platinum';
+  if (t.kind === 'exploration') return 'Explore';
   return t.kind[0].toUpperCase() + t.kind.slice(1);
 }
 
@@ -170,7 +171,7 @@ function renderProgress() {
 function renderAll() { renderList(); renderDetail(); renderProgress(); }
 
 document.querySelectorAll('#kindChips .chip').forEach((c) => {
-  if (c.dataset.kind === kind) c.classList.add('on'); else if (kind === 'all') c.classList.toggle('on', c.dataset.kind === 'all');
+  c.classList.toggle('on', c.dataset.kind === kind || (kind === 'all' && c.dataset.kind === 'all'));
   c.addEventListener('click', () => {
     kind = c.dataset.kind;
     document.querySelectorAll('#kindChips .chip').forEach((x) => x.classList.toggle('on', x === c));

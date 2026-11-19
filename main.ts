@@ -1,5 +1,7 @@
-// Leonida Platinum — my GTA 6 trophy guide & tracker entry: the finished app is
-// app/index.html with its 55 cited guides, tracker, roadmap and spoiler setting.
+// Leonida Platinum — my GTA 6 trophy guide & tracker entry (take 2, re-recorded):
+// the finished app is app/index.html with its 55 cited guides, tracker, roadmap
+// and spoiler setting, plus Explore/Misc filter chips so every trophy kind is
+// reachable from the toolbar.
 // A working gta6-trophy-guide-01 entry (Node 22, standard library only): the guide is this directory's app/ folder,
 // plain static files a browser opens at app/index.html (ES modules, CSS, no build step), offline: it loads nothing
 // over the network, and its trophy list and guides are app/data/trophies.json. The program hands it in: it copies app/
