@@ -1,221 +1,417 @@
-// Leonida Platinum: offline GTA VI trophy tracker.
-// Loads app/data/trophies.json (the official 55, with my own cited guides), keeps
-// earned ticks in localStorage, exports/imports progress as a file, filters by kind
-// and grade, and hides story-trophy spoilers until they are earned.
-const KEY = 'gta6-trophy-checklist-v1';
-const SPOILER_KEY = 'gta6-trophy-spoiler-v1';
-const rowsEl = document.getElementById('rows');
-const detailEl = document.getElementById('detail');
+// Leonida Platinum — offline GTA VI trophy tracker.
+// Plain ES module, no libraries, no network calls: the only fetch is the
+// app's own data/trophies.json, and progress lives in localStorage.
+
+const STORE_KEY = 'leonida-platinum-v1';
+const DATA_URL = 'data/trophies.json';
+
+const listEl = document.getElementById('trophyList');
+const countEl = document.getElementById('listCount');
+const headingEl = document.getElementById('listHeading');
+const emptyEl = document.getElementById('emptyMsg');
 const searchEl = document.getElementById('search');
-const gradeEl = document.getElementById('grade');
-const showEl = document.getElementById('show');
-const spoilerEl = document.getElementById('spoiler');
-const statusEl = document.getElementById('statusline');
-const params = new URLSearchParams(location.search);
+const kindEl = document.getElementById('kindFilter');
+const gradeEl = document.getElementById('gradeFilter');
+const statusEl = document.getElementById('statusFilter');
+const spoilerEl = document.getElementById('spoilerToggle');
+const progressText = document.getElementById('progressText');
+const progressPct = document.getElementById('progressPct');
+const progressFill = document.getElementById('progressFill');
+const progressSub = document.getElementById('progressSub');
+const actionMsg = document.getElementById('actionMsg');
+const detailEl = document.getElementById('detail');
 
-let earned = new Set(JSON.parse(localStorage.getItem(KEY) ?? '[]'));
-let spoiler = localStorage.getItem(SPOILER_KEY) === '1' || params.get('spoiler') === 'on';
-let kind = params.get('kind') || 'all';
-let selected = null;
+let trophies = [];
+let sourceBook = {};
+let earned = new Set();
+let spoilerOn = false;
+let openId = null;
+let viewTarget = null;
 
-const doc = await (await fetch('data/trophies.json')).json();
-const trophies = doc.trophies;
-
-// Demo/share state from the URL: ?seed=1,2,3 earns those ids, ?open=28 opens a guide.
-if (params.get('seed')) {
-  for (const n of params.get('seed').split(',')) {
-    const t = trophies.find((x) => x.id === Number(n));
-    if (t) earned.add(t.name);
-  }
-  save();
-}
-if (params.get('open')) selected = trophies.find((x) => x.id === Number(params.get('open'))) || null;
-if (params.get('grade')) gradeEl.value = params.get('grade');
-if (params.get('show')) showEl.value = params.get('show');
-if (!selected) selected = trophies[0];
-
-function save() { localStorage.setItem(KEY, JSON.stringify([...earned])); }
-function saveSpoiler() { localStorage.setItem(SPOILER_KEY, spoiler ? '1' : '0'); }
-function isStory(t) { return t.kind === 'story' || t.kind === 'side'; }
-function hiddenBySpoiler(t) { return spoiler && isStory(t) && !earned.has(t.name); }
-function gradeLabel(t) { return t.grade[0].toUpperCase() + t.grade.slice(1); }
-function kindLabel(t) {
-  if (t.kind === 'platinum') return 'Platinum';
-  if (t.kind === 'exploration') return 'Explore';
-  return t.kind[0].toUpperCase() + t.kind.slice(1);
-}
-
-function matches(t) {
-  const q = searchEl.value.trim().toLowerCase();
-  if (q && !(t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q) || (t.guide || '').toLowerCase().includes(q))) return false;
-  if (gradeEl.value !== 'all' && t.grade !== gradeEl.value) return false;
-  if (showEl.value === 'earned' && !earned.has(t.name)) return false;
-  if (showEl.value === 'remaining' && earned.has(t.name)) return false;
-  if (kind === 'online') return false;
-  if (kind === 'missable') return !!t.missable;
-  if (kind !== 'all' && t.kind !== kind) return false;
-  return true;
-}
-
-function renderList() {
-  const list = trophies.filter(matches);
-  document.getElementById('shownCount').textContent = kind === 'online'
-    ? '0 trophies — GTA VI has no online trophies (all 55 are single-player)'
-    : `${list.length} of 55 trophies`;
-  rowsEl.replaceChildren();
-  if (!list.length) {
-    const li = document.createElement('li');
-    li.className = 'row';
-    li.textContent = kind === 'online'
-      ? 'No online trophies: every one of the 55 is earned in single-player. Pick another filter.'
-      : 'No trophies match these filters.';
-    rowsEl.append(li);
-    return;
-  }
-  for (const t of list) {
-    const li = document.createElement('li');
-    li.className = 'row' + (earned.has(t.name) ? ' earned' : '') + (selected === t ? ' sel' : '');
-    const box = document.createElement('input');
-    box.type = 'checkbox';
-    box.checked = earned.has(t.name);
-    box.setAttribute('aria-label', 'Earned: ' + t.name);
-    box.addEventListener('change', () => {
-      if (box.checked) earned.add(t.name); else earned.delete(t.name);
-      save(); renderAll();
-    });
-    box.addEventListener('click', (e) => e.stopPropagation());
-    const mid = document.createElement('div');
-    const nm = document.createElement('div');
-    nm.className = 'nm';
-    nm.textContent = hiddenBySpoiler(t) ? 'Hidden story trophy — earn it to reveal' : t.name;
-    const ds = document.createElement('div');
-    ds.className = 'ds';
-    ds.textContent = hiddenBySpoiler(t) ? 'Spoiler hidden until earned.' : t.description;
-    const tags = document.createElement('div');
-    tags.className = 'tags';
-    for (const [txt, cls] of [[gradeLabel(t), 'g-' + t.grade], [kindLabel(t), ''], ...(t.missable ? [['⚠ MISSABLE', 'miss']] : []), ...(t.hidden ? [['Hidden', 'hidden']] : []), ...(earned.has(t.name) ? [['✓ Earned', 'earned']] : [])]) {
-      const s = document.createElement('span');
-      s.className = 'tag ' + cls;
-      s.textContent = txt;
-      tags.append(s);
+function loadStored() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed.earned)) {
+      earned = new Set(parsed.earned.filter((n) => Number.isInteger(n)));
     }
-    mid.append(nm, ds, tags);
-    const pts = document.createElement('div');
-    pts.className = 'pts';
-    pts.textContent = (t.target ? 'Target: ' + t.target.toLocaleString() : '') + (t.target ? '\n' : '') + '#' + t.id;
-    li.append(box, mid, pts);
-    li.addEventListener('click', () => { selected = t; renderAll(); });
-    rowsEl.append(li);
+    if (typeof parsed.spoiler === 'boolean') spoilerOn = parsed.spoiler;
+  } catch (_err) {
+    earned = new Set();
   }
 }
 
-function renderDetail() {
-  const t = selected;
-  detailEl.replaceChildren();
-  const h = document.createElement('h2');
-  h.textContent = hiddenBySpoiler(t) ? 'Hidden story trophy' : t.name;
-  const d = document.createElement('p');
-  d.className = 'desc';
-  d.textContent = hiddenBySpoiler(t) ? 'Spoiler hidden — earn this trophy to reveal its name and description.' : '“' + t.description + '”';
-  const meta = document.createElement('div');
-  meta.className = 'meta';
-  for (const [txt, cls] of [[gradeLabel(t), 'g-' + t.grade], [kindLabel(t), ''], ...(t.missable ? [['⚠ MISSABLE — do it in Chapter 1', 'miss']] : []), ...(t.hidden ? [['Hidden on PSN until earned', 'hidden']] : []), [earned.has(t.name) ? '✓ Earned' : 'Not yet earned', earned.has(t.name) ? 'earned' : '']]) {
-    const s = document.createElement('span');
-    s.className = 'tag ' + cls;
-    s.textContent = txt;
-    meta.append(s);
+function saveStored() {
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify({
+      game: 'Grand Theft Auto VI',
+      earned: [...earned].sort((a, b) => a - b),
+      spoiler: spoilerOn,
+    }));
+  } catch (_err) {
+    // Private browsing can refuse storage; the tracker still works in memory.
   }
-  detailEl.append(h, d, meta);
-  if (t.missable) {
-    const w = document.createElement('p');
-    w.className = 'warn';
-    w.textContent = '⚠ MISSABLE: the Chapter 1 balcony meditation may be required. Do it before Chapter 1 ends and keep a manual save at the start of Chapter 1.';
-    detailEl.append(w);
-  }
-  if (hiddenBySpoiler(t)) {
-    const p = document.createElement('p');
-    p.className = 'ok';
-    p.textContent = 'Turn off “Hide story spoilers” above to read this guide, or tick the trophy earned to reveal it.';
-    detailEl.append(p);
-    return;
-  }
-  const g = document.createElement('p');
-  g.className = 'guide';
-  g.textContent = t.guide;
-  detailEl.append(g);
-  const sh = document.createElement('h3');
-  sh.textContent = 'Sources — where each fact comes from';
-  const ul = document.createElement('ul');
-  for (const s of t.sources || []) {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = s.url;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.textContent = s.name;
-    li.append(a);
-    ul.append(li);
-  }
-  detailEl.append(sh, ul);
-  const note = document.createElement('p');
-  note.className = 'fine';
-  note.textContent = 'Guide written in my own words for this entry. Official name, description and grade are shown as PlayStation publishes them (Exophase / PSNProfiles).';
-  detailEl.append(note);
+}
+
+function byId(id) {
+  return trophies.find((t) => t.id === id) || null;
+}
+
+function isSpoilerHidden(t) {
+  return spoilerOn && t.kind === 'story' && !earned.has(t.id);
+}
+
+function gradeLabel(t) {
+  return t.grade.charAt(0).toUpperCase() + t.grade.slice(1);
+}
+
+function targetText(t) {
+  if (t.target === null || t.target === undefined) return '';
+  if (t.id === 52 || t.id === 53) return 'Target: $' + t.target.toLocaleString('en-US');
+  if (t.id === 14) return 'Target: 100% completion';
+  return 'Target: ' + t.target;
+}
+
+function filtered() {
+  const q = searchEl.value.trim().toLowerCase();
+  const kind = kindEl.value;
+  const grade = gradeEl.value;
+  const status = statusEl.value;
+  return trophies.filter((t) => {
+    if (kind !== 'all') {
+      if (kind === 'missable') {
+        if (!t.missable) return false;
+      } else if (t.kind !== kind) {
+        return false;
+      }
+    }
+    if (grade !== 'all' && t.grade !== grade) return false;
+    if (status === 'earned' && !earned.has(t.id)) return false;
+    if (status === 'remaining' && earned.has(t.id)) return false;
+    if (q) {
+      const hay = (t.name + ' ' + t.description + ' ' + t.guide).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
 }
 
 function renderProgress() {
-  document.getElementById('earnedCount').textContent = earned.size;
-  document.getElementById('barFill').style.width = (earned.size / trophies.length * 100) + '%';
+  const done = earned.size;
+  const total = trophies.length;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  progressText.textContent = done + ' / ' + total + ' trophies earned';
+  progressPct.textContent = pct + '%';
+  progressFill.style.width = pct + '%';
+  const remaining = total - done;
+  progressSub.textContent = done === total
+    ? 'Platinum earned: Vice Got a Price! — congratulations, Leonida Legend.'
+    : 'Platinum: Vice Got a Price! — ' + remaining + ' to go. ' +
+      'Next up: finish the story, then the 100% checklist.';
 }
 
-function renderAll() { renderList(); renderDetail(); renderProgress(); }
+function renderList() {
+  const rows = filtered();
+  listEl.innerHTML = '';
+  for (const t of rows) {
+    const li = document.createElement('li');
+    li.className = 'trophy-row' + (earned.has(t.id) ? ' is-earned' : '') +
+      (t.missable ? ' is-missable' : '') + (t.status === 'unconfirmed' ? ' is-unconfirmed' : '');
+    li.dataset.id = String(t.id);
 
-document.querySelectorAll('#kindChips .chip').forEach((c) => {
-  c.classList.toggle('on', c.dataset.kind === kind || (kind === 'all' && c.dataset.kind === 'all'));
-  c.addEventListener('click', () => {
-    kind = c.dataset.kind;
-    document.querySelectorAll('#kindChips .chip').forEach((x) => x.classList.toggle('on', x === c));
-    renderAll();
-  });
-});
-searchEl.addEventListener('input', renderAll);
-gradeEl.addEventListener('change', renderAll);
-showEl.addEventListener('change', renderAll);
-spoilerEl.checked = spoiler;
-spoilerEl.addEventListener('change', () => { spoiler = spoilerEl.checked; saveSpoiler(); renderAll(); });
+    const check = document.createElement('input');
+    check.type = 'checkbox';
+    check.checked = earned.has(t.id);
+    check.setAttribute('aria-label', 'Earned: ' + t.name);
+    check.addEventListener('change', () => {
+      if (check.checked) earned.add(t.id); else earned.delete(t.id);
+      saveStored();
+      renderAll();
+    });
 
-document.getElementById('export').addEventListener('click', () => {
-  const data = { app: 'leonida-platinum', game: 'Grand Theft Auto VI', exportedAt: new Date().toISOString(), earned: [...earned] };
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
-  a.download = 'gta6-trophy-progress.json';
-  a.click();
-  URL.revokeObjectURL(a.href);
-  statusEl.textContent = 'Exported ' + earned.size + ' earned trophies to gta6-trophy-progress.json.';
-});
-document.getElementById('import').addEventListener('change', async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  try {
-    const data = JSON.parse(await file.text());
-    const names = Array.isArray(data) ? data : data.earned;
-    if (!Array.isArray(names)) throw new Error('no earned list');
-    const known = new Set(trophies.map((t) => t.name));
-    earned = new Set(names.filter((n) => known.has(n)));
-    save(); renderAll();
-    statusEl.textContent = 'Imported ' + earned.size + ' earned trophies from ' + file.name + '.';
-  } catch (err) {
-    statusEl.textContent = 'Import failed: that file is not a progress export from this tracker.';
+    const body = document.createElement('button');
+    body.type = 'button';
+    body.className = 'trophy-body';
+    body.addEventListener('click', () => openDetail(t.id));
+
+    const hidden = isSpoilerHidden(t);
+    const name = document.createElement('span');
+    name.className = 'trophy-name';
+    name.textContent = hidden ? 'Hidden story trophy' : t.name;
+    const desc = document.createElement('span');
+    desc.className = 'trophy-desc';
+    desc.textContent = hidden
+      ? 'Story spoiler hidden — earn this trophy to reveal its name and description.'
+      : t.description;
+    const meta = document.createElement('span');
+    meta.className = 'trophy-meta';
+    const grade = document.createElement('span');
+    grade.className = 'grade grade-' + t.grade;
+    grade.textContent = gradeLabel(t);
+    meta.appendChild(grade);
+    const kind = document.createElement('span');
+    kind.className = 'kind';
+    kind.textContent = t.kind;
+    meta.appendChild(kind);
+    if (t.missable) {
+      const flag = document.createElement('span');
+      flag.className = 'flag flag-missable';
+      flag.textContent = 'POSSIBLY MISSABLE';
+      meta.appendChild(flag);
+    }
+    if (t.status === 'unconfirmed') {
+      const flag = document.createElement('span');
+      flag.className = 'flag flag-unconfirmed';
+      flag.textContent = 'UNCONFIRMED';
+      meta.appendChild(flag);
+    }
+    const target = targetText(t);
+    if (target) {
+      const tg = document.createElement('span');
+      tg.className = 'target';
+      tg.textContent = target;
+      meta.appendChild(tg);
+    }
+    body.append(name, desc, meta);
+    li.append(check, body);
+    listEl.appendChild(li);
   }
-  e.target.value = '';
-});
-document.getElementById('reset').addEventListener('click', () => {
-  if (!confirm('Clear all earned ticks? Export first if you want a backup.')) return;
-  earned = new Set(); save(); renderAll();
-  statusEl.textContent = 'Progress cleared.';
-});
-document.querySelectorAll('.tab').forEach((a) => a.addEventListener('click', () => {
-  document.querySelectorAll('.tab').forEach((x) => x.classList.toggle('active', x === a));
-}));
+  const shown = rows.length;
+  countEl.textContent = shown + ' of ' + trophies.length + ' trophies shown' +
+    (earned.size ? ' · ' + earned.size + ' earned' : '');
+  headingEl.textContent = 'Checklist — ' + trophies.length + ' trophies';
+  emptyEl.hidden = shown !== 0;
+  if (openId !== null) renderDetail();
+}
 
-renderAll();
+function sourceLink(key) {
+  const src = sourceBook[key];
+  if (!src) return null;
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = src.url;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  a.textContent = src.name;
+  li.appendChild(a);
+  const url = document.createElement('span');
+  url.className = 'url';
+  url.textContent = src.url;
+  li.appendChild(url);
+  return li;
+}
+
+function renderDetail() {
+  const t = byId(openId);
+  if (!t) {
+    detailEl.hidden = true;
+    return;
+  }
+  const hidden = isSpoilerHidden(t);
+  document.getElementById('detailName').textContent = hidden ? 'Hidden story trophy' : t.name;
+  document.getElementById('detailMeta').textContent =
+    gradeLabel(t) + ' · ' + t.kind + (t.missable ? ' · possibly missable' : '') +
+    (t.status === 'unconfirmed' ? ' · method unconfirmed' : '') +
+    (targetText(t) ? ' · ' + targetText(t) : '');
+  document.getElementById('detailDesc').textContent = hidden
+    ? 'Spoiler hidden until earned.'
+    : t.description;
+  const badges = document.getElementById('detailBadges');
+  badges.innerHTML = '';
+  if (t.missable) {
+    const b = document.createElement('span');
+    b.className = 'flag flag-missable';
+    b.textContent = 'POSSIBLY MISSABLE — see the roadmap box for the exact Chapter 1 steps and the manual-save safety net.';
+    badges.appendChild(b);
+  }
+  if (t.status === 'unconfirmed') {
+    const b = document.createElement('span');
+    b.className = 'flag flag-unconfirmed';
+    b.textContent = 'UNCONFIRMED — no guide has verified the method yet. Do not treat the steps below as fact.';
+    badges.appendChild(b);
+  }
+  document.getElementById('detailGuide').textContent = hidden
+    ? 'The guide for this story trophy is hidden until you earn it.'
+    : t.guide;
+  const srcList = document.getElementById('detailSources');
+  srcList.innerHTML = '';
+  for (const key of t.sources) {
+    const li = sourceLink(key);
+    if (li) srcList.appendChild(li);
+  }
+  const earnedBox = document.getElementById('detailEarned');
+  earnedBox.checked = earned.has(t.id);
+  earnedBox.onchange = () => {
+    if (earnedBox.checked) earned.add(t.id); else earned.delete(t.id);
+    saveStored();
+    renderAll();
+  };
+  detailEl.hidden = false;
+}
+
+function openDetail(id) {
+  openId = id;
+  renderDetail();
+  detailEl.scrollIntoView({ behavior: 'auto', block: 'start' });
+  syncUrl();
+}
+
+function closeDetail() {
+  openId = null;
+  detailEl.hidden = true;
+  syncUrl();
+}
+
+function syncUrl() {
+  const params = new URLSearchParams();
+  if (earned.size) params.set('seed', [...earned].sort((a, b) => a - b).join(','));
+  if (openId !== null) params.set('open', String(openId));
+  if (spoilerOn) params.set('spoiler', 'on');
+  const next = params.toString();
+  const url = next ? location.pathname + '?' + next : location.pathname;
+  history.replaceState(null, '', url);
+}
+
+function renderAll() {
+  renderProgress();
+  renderList();
+}
+
+function note(msg) {
+  actionMsg.textContent = msg;
+  window.clearTimeout(note.timer);
+  note.timer = window.setTimeout(() => { actionMsg.textContent = ''; }, 6000);
+}
+
+function exportProgress() {
+  const payload = {
+    game: 'Grand Theft Auto VI',
+    exportedAt: new Date().toISOString(),
+    earned: [...earned].sort((a, b) => a - b),
+    spoiler: spoilerOn,
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'gta6-trophy-progress.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  window.setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  note('Progress exported: ' + payload.earned.length + ' trophies.');
+}
+
+function importProgress(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(String(reader.result));
+      const ids = Array.isArray(parsed) ? parsed : parsed.earned;
+      if (!Array.isArray(ids)) throw new Error('no earned list');
+      const valid = new Set(trophies.map((t) => t.id));
+      const kept = ids.filter((n) => Number.isInteger(n) && valid.has(n));
+      earned = new Set(kept);
+      if (typeof parsed.spoiler === 'boolean') {
+        spoilerOn = parsed.spoiler;
+        spoilerEl.checked = spoilerOn;
+      }
+      saveStored();
+      renderAll();
+      note('Progress imported: ' + kept.length + ' trophies.');
+    } catch (_err) {
+      note('That file is not a valid progress export.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function applyUrlParams() {
+  const params = new URLSearchParams(location.search);
+  const seed = params.get('seed');
+  if (seed) {
+    const valid = new Set(trophies.map((t) => t.id));
+    for (const part of seed.split(',')) {
+      const n = Number.parseInt(part.trim(), 10);
+      if (Number.isInteger(n) && valid.has(n)) earned.add(n);
+    }
+    saveStored();
+  }
+  if (params.get('spoiler') === 'on') {
+    spoilerOn = true;
+    spoilerEl.checked = true;
+  }
+  const open = params.get('open');
+  if (open) {
+    const n = Number.parseInt(open, 10);
+    if (Number.isInteger(n) && byId(n)) openId = n;
+  }
+  const view = params.get('view');
+  if (view === 'list') viewTarget = document.querySelector('.controls');
+  else if (view === 'missable') viewTarget = document.querySelector('.missable-box');
+  else if (view === 'roadmap') viewTarget = document.getElementById('roadmap');
+}
+
+async function init() {
+  loadStored();
+  const res = await fetch(DATA_URL);
+  if (!res.ok) throw new Error('Could not load ' + DATA_URL);
+  const data = await res.json();
+  trophies = data.trophies;
+  sourceBook = data.sources || {};
+  spoilerEl.checked = spoilerOn;
+  applyUrlParams();
+  renderAll();
+  if (openId !== null) {
+    renderDetail();
+    detailEl.scrollIntoView({ behavior: 'auto', block: 'start' });
+  }
+  if (viewTarget) {
+    viewTarget.scrollIntoView({ behavior: 'auto', block: 'start' });
+  }
+
+  searchEl.addEventListener('input', renderList);
+  kindEl.addEventListener('change', renderList);
+  gradeEl.addEventListener('change', renderList);
+  statusEl.addEventListener('change', renderList);
+  spoilerEl.addEventListener('change', () => {
+    spoilerOn = spoilerEl.checked;
+    saveStored();
+    renderAll();
+    syncUrl();
+  });
+  document.getElementById('detailClose').addEventListener('click', closeDetail);
+  document.getElementById('exportBtn').addEventListener('click', exportProgress);
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (window.confirm('Reset all progress? This clears every earned trophy.')) {
+      earned = new Set();
+      openId = null;
+      detailEl.hidden = true;
+      saveStored();
+      renderAll();
+      syncUrl();
+      note('Progress reset.');
+    }
+  });
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    syncUrl();
+    try {
+      await navigator.clipboard.writeText(location.href);
+      note('Share link copied to clipboard.');
+    } catch (_err) {
+      note('Copy this URL from the address bar: ' + location.href);
+    }
+  });
+  const importFile = document.getElementById('importFile');
+  document.getElementById('importBtn').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    if (importFile.files && importFile.files[0]) importProgress(importFile.files[0]);
+    importFile.value = '';
+  });
+}
+
+init().catch((err) => {
+  listEl.innerHTML = '';
+  emptyEl.hidden = false;
+  emptyEl.textContent = 'The trophy list could not be loaded (' + err.message + '). Open this app from its own folder so data/trophies.json loads.';
+});
