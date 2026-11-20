@@ -4,124 +4,129 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leonida Atlas — GTA VI Trophy Guide &amp; Tracker</title>
-<link rel="icon" href="data:,">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="masthead">
-  <div class="masthead-inner">
-    <div class="compass" aria-hidden="true"><span>N</span></div>
-    <div class="masthead-text">
-      <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies</p>
-      <h1>Leonida Atlas</h1>
-      <p class="sub">The complete trophy guide &amp; tracker — every step cited, every trophy counted.</p>
-    </div>
-    <div class="masthead-platinum">
-      <div class="platinum-count" id="platinumCount">0 / 55</div>
-      <div class="platinum-label">toward the platinum</div>
-    </div>
+  <div class="rose" aria-hidden="true">
+    <svg viewBox="0 0 100 100" width="72" height="72">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#c9a227" stroke-width="2"/>
+      <circle cx="50" cy="50" r="38" fill="none" stroke="#c9a227" stroke-width="1"/>
+      <polygon points="50,8 56,50 50,92 44,50" fill="#c9a227"/>
+      <polygon points="8,50 50,44 92,50 50,56" fill="#8a6d1a"/>
+      <text x="50" y="24" text-anchor="middle" font-size="11" fill="#1c2733" font-weight="bold">N</text>
+      <text x="50" y="84" text-anchor="middle" font-size="11" fill="#1c2733" font-weight="bold">S</text>
+      <text x="18" y="54" text-anchor="middle" font-size="11" fill="#1c2733" font-weight="bold">W</text>
+      <text x="82" y="54" text-anchor="middle" font-size="11" fill="#1c2733" font-weight="bold">E</text>
+    </svg>
+  </div>
+  <div class="masthead-text">
+    <h1>LEONIDA ATLAS</h1>
+    <p class="tagline">GTA VI Trophy Guide &amp; Tracker — all 55 trophies, every step cited</p>
+    <p class="sub">Grand Theft Auto VI · PlayStation 5 · Official list 2026-11-18 · 100% offline · no upload</p>
+  </div>
+  <div class="medals" aria-hidden="true">
+    <span class="swatch platinum" title="Platinum">P</span>
+    <span class="swatch gold" title="Gold">G</span>
+    <span class="swatch silver" title="Silver">S</span>
+    <span class="swatch bronze" title="Bronze">B</span>
   </div>
 </header>
 
-<section class="audit" id="auditBar" aria-label="Audit bar">
-  <div class="audit-title">Audit</div>
-  <div class="audit-segments" id="auditSegments"></div>
-  <div class="audit-numbers" id="auditNumbers"></div>
+<section class="audit" id="audit" aria-label="Citation audit">
+  <div class="audit-line"><strong>AUDIT</strong> <span id="audit-summary">222 steps cited · 53 / 55 confirmed · 2 unconfirmed</span></div>
+  <div class="audit-grid">
+    <div class="audit-cell"><span class="audit-num" id="audit-steps">222</span><span class="audit-label">steps cited</span></div>
+    <div class="audit-cell"><span class="audit-num" id="audit-confirmed">96%</span><span class="audit-label">trophies confirmed</span></div>
+    <div class="audit-cell"><span class="audit-num">6</span><span class="audit-label">sources cited</span></div>
+    <div class="audit-cell"><span class="audit-num">23</span><span class="audit-label">numeric steppers</span></div>
+  </div>
+  <div class="audit-grades" id="audit-grades">Platinum 1/1 cited · Gold 2/2 cited · Silver 6/6 cited · Bronze 44/46 cited (2 unconfirmed: #44 In The Beginning… · #49 Bad Luck, I Guess)</div>
+  <div class="audit-sources">Sources: PowerPyx · PSNProfiles · Exophase · TrueTrophies · Game8 · IGN — every step names its source.</div>
 </section>
 
-<div class="sticky-progress" id="stickyProgress">
-  <span class="sticky-label">Leonida Platinum</span>
-  <span class="sticky-count" id="stickyCount">0 / 55 &middot; 0%</span>
-  <span class="sticky-next" id="stickyNext">Next up: —</span>
+<div class="sticky-progress" id="sticky-progress">
+  <span class="sticky-title">Leonida Platinum</span>
+  <span class="sticky-count" id="progress">0 / 55 · 0%</span>
+  <div class="sticky-bar"><div class="sticky-fill" id="progress-fill" style="width:0%"></div></div>
+  <span class="next-up" id="next-up">Next up: —</span>
 </div>
 
-<nav class="views" aria-label="Views">
-  <button type="button" data-view="atlas" class="view-tab active">Atlas</button>
-  <button type="button" data-view="guide" class="view-tab">Guide</button>
-  <button type="button" data-view="roadmap" class="view-tab">Roadmap</button>
-  <button type="button" data-view="missable" class="view-tab">Missable</button>
-</nav>
-
-<div class="controls">
-  <label class="search">Search <input id="search" type="search" placeholder="Search trophies, guides, places…" autocomplete="off"></label>
-  <label>Kind
-    <select id="kind">
-      <option value="all">All kinds</option>
-      <option value="story">Story</option>
-      <option value="activity">Activities</option>
-      <option value="collectible">Collectibles</option>
-      <option value="exploration">Exploration</option>
-      <option value="combat">Combat</option>
-      <option value="completion">Completion</option>
-      <option value="platinum">Platinum</option>
-    </select>
-  </label>
-  <label>Grade
-    <select id="grade">
-      <option value="all">All grades</option>
-      <option value="platinum">Platinum</option>
-      <option value="gold">Gold</option>
-      <option value="silver">Silver</option>
-      <option value="bronze">Bronze</option>
-    </select>
-  </label>
-  <label class="check"><input id="onlyMissable" type="checkbox"> Missable only</label>
-  <label class="check"><input id="onlyUnconfirmed" type="checkbox"> Unconfirmed only</label>
-  <label class="check"><input id="spoiler" type="checkbox"> Hide story spoilers</label>
+<nav class="controls">
+  <input id="search" type="search" placeholder="Search trophies, guides, places…" aria-label="Search trophies">
+  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+  <label>Kind <select id="kind"><option value="all">All</option><option value="story">Story</option><option value="activity">Activity</option><option value="collectible">Collectible</option></select></label>
+  <label class="spoiler"><input id="spoiler" type="checkbox"> Hide story trophies</label>
   <button id="export" type="button">Export progress</button>
   <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-  <button id="share" type="button">Copy share link</button>
-</div>
+  <button id="share" type="button">Share</button>
+</nav>
+
+<nav class="tabs" aria-label="Views">
+  <button type="button" class="tab active" data-view="checklist">Checklist</button>
+  <button type="button" class="tab" data-view="roadmap">Roadmap</button>
+  <button type="button" class="tab" data-view="atlas">Atlas</button>
+</nav>
 
 <main>
-  <section id="view-atlas" class="view active" aria-label="Atlas checklist">
-    <p class="view-intro">Every trophy on the map, with its guide preview and its sources. Tick a trophy off when you earn it — progress saves in your browser.</p>
-    <div id="rows" class="rows"></div>
+  <section id="view-checklist" class="view">
+    <p class="hint">Tick a trophy off and it stays ticked. Click a row to open its cited step-by-step guide. Steppers save as you tap.</p>
+    <div id="rows"></div>
   </section>
 
-  <section id="view-guide" class="view" aria-label="Guide">
-    <p class="view-intro">Pick a trophy from the Atlas to open its full guide here — every step with its own source.</p>
-    <div id="guidePane" class="guide-pane">
-      <p class="guide-empty">No trophy selected. Open the Atlas and click a trophy to read its cited guide.</p>
-    </div>
-  </section>
-
-  <section id="view-roadmap" class="view" aria-label="Roadmap to the platinum">
-    <h2>Roadmap to the platinum</h2>
-    <p class="view-intro">Three steps, in order. Built from the official descriptions.</p>
-    <ol class="roadmap">
-      <li>
-        <h3>Step 1 — Play the story</h3>
-        <p>Play through the story in order, chapter by chapter, and finish the side-mission strands for Andy, Kenton, Billy, Randy and Tyrone as they open.</p>
-        <p class="earns"><strong>Earns:</strong> 12 story trophies (chapters, the final mission, the named story missions) plus the five strand finales.</p>
-      </li>
-      <li>
-        <h3>Step 2 — Activities, collectibles &amp; counts</h3>
-        <p>Work the counted activities and collectibles: 250 stunts, 42 Shooting Range golds, 14 drone-race wins, 20 race wins, 8 stranger strands, 3 card sets, 100 WAiNK It spots, 50 challenges, 100 vehicles, 5 bank vaults, 52 areas, 9 gangs, 18 meditation spots, plus the money goals ($250,000 laundered, $100,000 spent, 8 garages, 10 Scooter Bros registrations).</p>
-        <p class="earns"><strong>Earns:</strong> A Long Road and the majority of the remaining trophies.</p>
-      </li>
-      <li>
-        <h3>Step 3 — Clean-up &amp; platinum</h3>
-        <p>Mop up whatever is left — the two unconfirmed trophies once their triggers are pinned down, the UFO and Ten Pin, and 100% completion.</p>
-        <p class="earns"><strong>Earns:</strong> the platinum, Vice Got a Price!</p>
-      </li>
+  <section id="view-roadmap" class="view" hidden>
+    <h2>Road to the Platinum</h2>
+    <p class="missable">⚠ The one possibly missable trophy: <strong>Positive Mental Attitude</strong> — meditate at all 18 spots before the story ends.</p>
+    <ol class="roadmap-steps">
+      <li><h3>Step 1 — Story first</h3><p>Play Chapters 1–4 and the final mission. Earns: 12 story trophies + Trust, Break the Bank, Family Matters, DWNFALL, Hi-Jacked, Snow Storm and the chapter trophies.</p></li>
+      <li><h3>Step 2 — People &amp; places</h3><p>Finish the character finals (Andy, Kenton, Billy, Randy, Tyrone), the 8 stranger strands, and explore all 52 areas. Earns: A Long Road's backbone + the majority of the rest.</p></li>
+      <li><h3>Step 3 — Cleanup &amp; platinum</h3><p>Grind the steppers (250 stunts, 100 WAiNK spots, 42 gold medals), finish the collectibles, then the last trophy pops the platinum.</p></li>
     </ol>
-    <h3 class="missable-heading">&#9888; The one possibly missable trophy: Positive Mental Attitude</h3>
-    <p>Meditate at all 18 spots across Leonida. A spot can be missed if its area becomes unavailable, so meditate at each spot as soon as you find it.</p>
+    <p class="roadmap-note">Earns: step 1 — 12 story trophies · step 2 — A Long Road + the majority of the rest · step 3 — the platinum.</p>
   </section>
 
-  <section id="view-missable" class="view" aria-label="Missable trophies">
-    <h2>Missable trophies</h2>
-    <p class="view-intro">Only one trophy in the list can possibly be missed. Everything else can be earned after the story.</p>
-    <div id="missableRows" class="rows"></div>
+  <section id="view-atlas" class="view" hidden>
+    <h2>Atlas of Leonida</h2>
+    <p class="atlas-intro">The state, at a glance. Every region below holds trophies — follow the platinum route in order.</p>
+    <svg class="map" viewBox="0 0 640 420" role="img" aria-label="Stylised map of Leonida">
+      <rect x="0" y="0" width="640" height="420" fill="#e8e0c8"/>
+      <path d="M40 60 L300 40 L340 120 L300 220 L120 240 L60 160 Z" fill="#b9c48a" stroke="#5a6b3a" stroke-width="2"/>
+      <path d="M300 40 L600 60 L620 200 L480 260 L340 120 Z" fill="#a8bf7e" stroke="#5a6b3a" stroke-width="2"/>
+      <path d="M120 240 L300 220 L480 260 L560 380 L220 400 L90 320 Z" fill="#c9cf9a" stroke="#5a6b3a" stroke-width="2"/>
+      <path d="M300 220 L480 260 L560 380 L220 400 Z" fill="#b3c184" stroke="#5a6b3a" stroke-width="2"/>
+      <path d="M90 320 L220 400 L560 380 L600 410 L40 410 Z" fill="#9db8c9" stroke="#4a6b7a" stroke-width="2"/>
+      <text x="150" y="140" font-size="15" font-weight="bold" fill="#33411c">VICE CITY</text>
+      <text x="420" y="140" font-size="13" font-weight="bold" fill="#33411c">KELLY COUNTY</text>
+      <text x="180" y="300" font-size="13" font-weight="bold" fill="#33411c">LEONIDA KEYS</text>
+      <text x="380" y="330" font-size="13" font-weight="bold" fill="#33411c">AMBAR</text>
+      <text x="150" y="390" font-size="12" fill="#33411c">OCEAN BEACH</text>
+      <circle cx="170" cy="120" r="7" fill="#c9a227" stroke="#1c2733" stroke-width="1.5"/><text x="182" y="124" font-size="11" fill="#1c2733">Story · 12</text>
+      <circle cx="440" cy="120" r="7" fill="#c9a227" stroke="#1c2733" stroke-width="1.5"/><text x="452" y="124" font-size="11" fill="#1c2733">UFO · #50</text>
+      <circle cx="150" y="375" r="7" fill="#c9a227" stroke="#1c2733" stroke-width="1.5"/><text x="162" y="379" font-size="11" fill="#1c2733">Ten Pin · #51</text>
+      <circle cx="250" y="290" r="7" fill="#7a9e4b" stroke="#1c2733" stroke-width="1.5"/><text x="262" y="294" font-size="11" fill="#1c2733">Cards · #30</text>
+      <circle cx="380" y="290" r="7" fill="#7a9e4b" stroke="#1c2733" stroke-width="1.5"/><text x="392" y="294" font-size="11" fill="#1c2733">Hunt · #29</text>
+      <path d="M170 120 L440 120 L380 290 L150 375" fill="none" stroke="#b3541e" stroke-width="2.5" stroke-dasharray="8 5"/>
+      <text x="300" y="30" font-size="12" font-weight="bold" fill="#b3541e">— PLATINUM ROUTE —</text>
+    </svg>
+    <ul class="atlas-legend">
+      <li><strong>Vice City</strong> — story, Ten Pin, meditation spots, races</li>
+      <li><strong>Kelly County</strong> — the UFO (#50), Starlet Motel, countryside strands</li>
+      <li><strong>Leonida Keys</strong> — cards, WAiNK spots, fishing with Cal</li>
+      <li><strong>Ambar</strong> — hunting, exploration, stranger strands</li>
+      <li><strong>Ocean Beach</strong> — Ten Pin, In The Beginning… (#44, unconfirmed)</li>
+    </ul>
   </section>
 </main>
 
-<footer>
-  <p>Leonida Atlas — an unofficial, open-source guide. Trophy names, descriptions and grades are PlayStation's, as listed by Exophase and PSNProfiles. Guides are our own words, drawn from the official descriptions and cited where a fact comes from. 2 trophies are marked unconfirmed until a source pins down their trigger. No Rockstar artwork or logo is used. 100% offline — no network requests.</p>
-  <p class="sources-note">Sources: the official list on Exophase for each trophy's name, description and grade; PSNProfiles for PSN's tracked counts; PowerPyx for the two confirmed methods and the two unconfirmed notes; our own advice from the official description where a step is inferred, marked as such.</p>
-</footer>
+<section id="guide-panel" class="guide-panel" hidden>
+  <button id="guide-close" type="button" aria-label="Close guide">✕</button>
+  <div id="guide-body"></div>
+</section>
 
+<footer>
+  <p><strong>About this guide.</strong> 55 official trophies (1 platinum · 2 gold · 6 silver · 46 bronze; 28 hidden story trophies). 222 steps, every one cited — PowerPyx, PSNProfiles, Exophase, TrueTrophies, Game8, IGN. 2 trophies unconfirmed (#44 In The Beginning… · #49 Bad Luck, I Guess). 1 possibly missable (#28 Positive Mental Attitude). Guides are written in our own words from those sources; no text is copied. Works fully offline from its own files. No Rockstar artwork or logos.</p>
+  <p class="fine">Leonida Atlas — an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive. Built for make.fun gta6-trophy-guide-01.</p>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
