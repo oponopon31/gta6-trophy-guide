@@ -1,3 +1,7 @@
+[![Make.fun](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Rank](https://make.fun/badge/gta6-trophy-guide-01/oponopon31/gta6-trophy-guide/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Reward](https://make.fun/badge/gta6-trophy-guide-01/oponopon31/gta6-trophy-guide/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+
 # Leonida Platinum — GTA 6 Trophy Guide & Tracker
 
 An offline web app that guides and tracks all 55 PlayStation 5 trophies of
