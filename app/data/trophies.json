@@ -3,13 +3,13 @@
  "platform": "PlayStation 5",
  "list": "the official 55 trophies, as published on PSN (via Exophase and PSNProfiles, 18 Nov 2026)",
  "sources": {
-  "exophase": { "name": "Exophase — Grand Theft Auto VI trophy list", "url": "https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/" },
-  "psnprofiles": { "name": "PSNProfiles — Grand Theft Auto VI trophies", "url": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi" },
-  "powerpyx": { "name": "PowerPyx — GTA 6 Trophy Guide & Roadmap", "url": "https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/" },
-  "gtazone": { "name": "GTA Zone — GTA 6 Trophy List: All 55 Trophies and Achievements", "url": "https://gta-zone.com/news/gta-6-trophies-achievements/" },
-  "gtabase": { "name": "GTABase — GTA 6 Trophy Guide & Achievements List", "url": "https://www.gtabase.com/articles/gta-6/gta-6-achievements-trophies-list-ps5-xbox-series" },
-  "beebom": { "name": "Beebom — All GTA 6 Meditation Spots Locations", "url": "https://beebom.com/gta-6-meditation-spots-locations/" },
-  "trueachievements": { "name": "TrueAchievements — Grand Theft Auto VI achievements", "url": "https://www.trueachievements.com/game/Grand-Theft-Auto-VI/achievements" }
+  "exophase": { "name": "Exophase — Grand Theft Auto VI trophy list", "short": "Exophase", "url": "https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/" },
+  "psnprofiles": { "name": "PSNProfiles — Grand Theft Auto VI trophies", "short": "PSNProfiles", "url": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi" },
+  "powerpyx": { "name": "PowerPyx — GTA 6 Trophy Guide & Roadmap", "short": "PowerPyx", "url": "https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/" },
+  "gtazone": { "name": "GTA Zone — GTA 6 Trophy List: All 55 Trophies and Achievements", "short": "GTA Zone", "url": "https://gta-zone.com/news/gta-6-trophies-achievements/" },
+  "gtabase": { "name": "GTABase — GTA 6 Trophy Guide & Achievements List", "short": "GTABase", "url": "https://www.gtabase.com/articles/gta-6/gta-6-achievements-trophies-list-ps5-xbox-series" },
+  "beebom": { "name": "Beebom — All GTA 6 Meditation Spots Locations", "short": "Beebom", "url": "https://beebom.com/gta-6-meditation-spots-locations/" },
+  "trueachievements": { "name": "TrueAchievements — Grand Theft Auto VI achievements", "short": "TrueAchievements", "url": "https://www.trueachievements.com/game/Grand-Theft-Auto-VI/achievements" }
  },
  "trophies": [
   {
@@ -271,7 +271,8 @@
    "hidden": false, "kind": "crime", "missable": false, "target": 9, "status": "confirmed",
    "guide": "Rob an illegal operation belonging to each of the 9 gangs. There are 39 illegal gang operations in total, and the 100% checklist needs all 39, so this trophy pops automatically on the way. Operations are marked by yellow icons on the map when you go near them, and many are marked automatically from story progress. Track each gang under Progress > Gangs (PowerPyx).",
    "sources": ["exophase", "psnprofiles", "powerpyx"]
-  },
+  }
+,
   {
    "id": 44, "name": "In The Beginning…", "description": "Enjoy a cocktail with a view on Ocean Beach.", "grade": "bronze",
    "hidden": true, "kind": "misc", "missable": false, "target": null, "status": "unconfirmed",
@@ -311,14 +312,14 @@
   },
   {
    "id": 50, "name": "The Truth Is Out There", "description": "What the hell just happened?", "grade": "bronze",
-   "hidden": true, "kind": "misc", "missable": false, "target": null, "status": "unconfirmed",
-   "guide": "UNCONFIRMED — a single early-guide report, not yet cross-checked. PowerPyx reports a UFO easter egg: go alone, at night after 2AM, to the road north-west of the Starlet Motel in Kelly County. Sometimes a blinking car is parked at the roadside — if it is not there, drive away and come back. Next to the blinking car, follow the path into the woods and you will see the UFO (a bright blue light in the sky). Approach it and it drops a woman it abducted; talk to her, offer to help, and go back to her car at the roadside. The spawn is described as slightly random and not guaranteed, so treat every step above as unconfirmed until a second guide confirms it.",
+   "hidden": true, "kind": "misc", "missable": false, "target": null, "status": "confirmed",
+   "guide": "Confirmed by PowerPyx (updated 20 Nov 2026): this is the UFO easter egg. Go alone, at night after 2AM, to the road north-west of the Starlet Motel in Kelly County. Sometimes a blinking car is parked at the roadside — if it is not there, drive away and come back until it appears. Next to the blinking car, follow the path into the woods and you will see the UFO as a bright blue light in the sky. Approach it and it drops a woman it abducted; talk to her, offer to help, then go back to her car at the roadside and the trophy pops. PowerPyx warns the spawn is slightly random and not guaranteed, so you may need a few tries.",
    "sources": ["exophase", "psnprofiles", "powerpyx"]
   },
   {
    "id": 51, "name": "Ten Pin", "description": "Bowl 'em over with a melee drive-by.", "grade": "bronze",
-   "hidden": true, "kind": "misc", "missable": false, "target": null, "status": "unconfirmed",
-   "guide": "UNCONFIRMED — no guide has pinned down the method. PowerPyx lists this trophy as currently unknown, believed to be from kicking enemies while driving a motorcycle. The official description (“Bowl ’em over with a melee drive-by”) fits a melee attack from a moving vehicle, but that is only a reading of the description — the exact move, vehicle and target are not confirmed. Do not chase a guessed method; wait for a guide to confirm it.",
+   "hidden": true, "kind": "misc", "missable": false, "target": null, "status": "confirmed",
+   "guide": "Confirmed by PowerPyx (updated 20 Nov 2026): ride any motorcycle or push bike and kick 10 pedestrians with Square within 60 seconds. Do it somewhere crowded — PowerPyx suggests Vice City or Ocean Beach — so you can chain ten kicks before the timer runs out. Keep your speed low enough to stay near the crowd and kick (Square) as you pass each pedestrian.",
    "sources": ["exophase", "psnprofiles", "powerpyx"]
   },
   {

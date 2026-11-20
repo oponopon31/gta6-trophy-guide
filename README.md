@@ -18,24 +18,27 @@ Or open `app/index.html` directly in a browser (serve it over HTTP for the data 
 ## What it does
 
 - **All 55 trophies** with official names, descriptions and grades (1 platinum, 2 gold, 6 silver, 46 bronze), as published on PSN via Exophase and PSNProfiles.
-- **Tracker**: tick trophies off; progress saves in localStorage. Export progress to a JSON file, import it back, reset, or copy a share link (`?seed=…&open=…&spoiler=on`) that fills progress and opens one trophy.
+- **Tracker**: tick trophies off; progress saves in localStorage. A slim progress bar stays pinned to the top of the page, and the tracker always tells you the **next trophy up** — the first one you have not earned yet, with its first guide step.
+- **Numeric progress**: trophies with a target (250 stunts, 500 profile actions, $250,000 laundered, 100% completion, and more) get a − / + stepper in the guide panel. Reach the target and the trophy is marked earned automatically; the count saves with the rest of your progress.
+- **Every checklist row shows its guide**: each row carries a one-line preview of the guide and a "Sources: …" line, so the cited guidance is visible without opening every trophy. Rows are denser and the text is larger, so the list stays readable when the page is shrunk to a screenshot.
 - **Search and filters**: by name or mission, by kind (story, missable, collectibles, activities, crime, side quests, money, explore, misc), by grade, and remaining-only / earned-only.
 - **Spoiler setting**: "Hide story spoilers" hides the name, description and guide of story trophies you have not earned yet.
-- **Roadmap to the platinum**: 3 steps from PowerPyx — story 60–80 hours, 100% checklist ~100 hours, Strangers & Freaks and cleanup ~10 hours; about 200 hours in one playthrough, difficulty 4/10, no online trophies.
+- **Roadmap to the platinum**: 3 steps from PowerPyx — story 60–80 hours, 100% checklist ~100 hours, Strangers & Freaks and cleanup ~10 hours; about 200 hours in one playthrough, difficulty 4/10, no online trophies. Each step says what it earns.
 - **Missable flag, honestly**: exactly one trophy is possibly missable — **Positive Mental Attitude**, the Chapter 1 balcony meditation — with the exact steps and a manual-save safety net. The other 54 are all earnable in free-roam after the story.
-- **Cited guides**: every trophy's guide names its sources beside it. Four trophies whose method no guide has confirmed yet (In The Beginning…, Bad Luck, I Guess, The Truth Is Out There, Ten Pin) are marked **UNCONFIRMED**, and description-based readings are labelled as inferences, not facts.
+- **Cited guides**: every trophy's guide names its sources beside it. Two trophies whose method no guide has confirmed yet (In The Beginning… and Bad Luck, I Guess) are marked **UNCONFIRMED**, and description-based readings are labelled as inferences, not facts. Two more were confirmed by PowerPyx on 20 Nov 2026: Ten Pin (kick 10 pedestrians from a motorcycle or push bike within 60 seconds) and The Truth Is Out There (the UFO easter egg north-west of the Starlet Motel).
+- **Export / import / share**: export progress to a JSON file (earned trophies and numeric counts), import it back, reset, or copy a share link (`?seed=…&open=…&spoiler=on`) that fills progress and opens one trophy.
 - **Original look**, no Rockstar logo, box art or game screenshots.
 
 ## Files
 
-- `app/index.html` — the page: roadmap, tracker controls, checklist, guide panel, sources.
-- `app/app.js` — the tracker (ES module, no libraries): rendering, filters, spoiler mode, localStorage, export/import, share-link URL parameters.
+- `app/index.html` — the page: sticky progress bar, roadmap, tracker controls, checklist, guide panel, sources.
+- `app/app.js` — the tracker (ES module, no libraries): rendering, guide previews and source lines, numeric steppers, next-up line, filters, spoiler mode, localStorage, export/import, share-link URL parameters.
 - `app/style.css` — the original stylesheet.
 - `app/data/trophies.json` — the 55 trophies: official name/description/grade, hidden flag, kind, missable flag, target count, guide, per-trophy source keys, and a confirmation status.
-- `main.ts` — Node 22 entrypoint: copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with `vendor/makefun-frontend.ts` (do not edit the vendor file).
-- `serve.ts` — small static server for local testing.
+- `main.ts` — Node 22 entrypoint: validates the trophy data (log-only, never throws), copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with `vendor/makefun-frontend.ts` (do not edit the vendor file).
+- `serve.ts` — small static server for local testing, with GET and HEAD support.
 - `shots.json` — the URL and viewport behind each screenshot.
-- `screenshots/` — 4 screenshots of the running app (1280×800): (1) checklist with official names/descriptions/grades, progress and filters; (2) one trophy's guide with its sources open; (3) roadmap and the missable flag; (4) the spoiler setting at work.
+- `screenshots/` — 4 screenshots of the running app (1280×800): (1) checklist with guide previews and sources, progress and filters; (2) one trophy's guide with its sources open; (3) roadmap with all three steps and the missable flag; (4) the spoiler setting at work.
 
 ## Verify
 

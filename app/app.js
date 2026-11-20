@@ -18,12 +18,16 @@ const progressText = document.getElementById('progressText');
 const progressPct = document.getElementById('progressPct');
 const progressFill = document.getElementById('progressFill');
 const progressSub = document.getElementById('progressSub');
+const stickyText = document.getElementById('stickyText');
+const stickyPct = document.getElementById('stickyPct');
+const stickyFill = document.getElementById('stickyFill');
 const actionMsg = document.getElementById('actionMsg');
 const detailEl = document.getElementById('detail');
 
 let trophies = [];
 let sourceBook = {};
 let earned = new Set();
+let counts = {};
 let spoilerOn = false;
 let openId = null;
 let viewTarget = null;
@@ -36,9 +40,18 @@ function loadStored() {
     if (Array.isArray(parsed.earned)) {
       earned = new Set(parsed.earned.filter((n) => Number.isInteger(n)));
     }
+    if (parsed.counts && typeof parsed.counts === 'object') {
+      for (const [key, value] of Object.entries(parsed.counts)) {
+        const id = Number.parseInt(key, 10);
+        if (Number.isInteger(id) && Number.isInteger(value) && value > 0) {
+          counts[id] = value;
+        }
+      }
+    }
     if (typeof parsed.spoiler === 'boolean') spoilerOn = parsed.spoiler;
   } catch (_err) {
     earned = new Set();
+    counts = {};
   }
 }
 
@@ -47,6 +60,7 @@ function saveStored() {
     localStorage.setItem(STORE_KEY, JSON.stringify({
       game: 'Grand Theft Auto VI',
       earned: [...earned].sort((a, b) => a - b),
+      counts,
       spoiler: spoilerOn,
     }));
   } catch (_err) {
@@ -66,11 +80,36 @@ function gradeLabel(t) {
   return t.grade.charAt(0).toUpperCase() + t.grade.slice(1);
 }
 
+function formatCount(t, n) {
+  if (t.id === 52 || t.id === 53) return '$' + n.toLocaleString('en-US');
+  if (t.id === 14) return n + '%';
+  return String(n);
+}
+
 function targetText(t) {
   if (t.target === null || t.target === undefined) return '';
   if (t.id === 52 || t.id === 53) return 'Target: $' + t.target.toLocaleString('en-US');
   if (t.id === 14) return 'Target: 100% completion';
   return 'Target: ' + t.target;
+}
+
+function stepSize(t) {
+  if (t.id === 52 || t.id === 53) return 1000;
+  return 1;
+}
+
+function previewText(t) {
+  const guide = t.guide || '';
+  const end = guide.indexOf('. ');
+  let first = end === -1 ? guide : guide.slice(0, end + 1);
+  if (first.length > 150) first = first.slice(0, 147).trimEnd() + '…';
+  return first;
+}
+
+function sourceNames(t) {
+  return (t.sources || [])
+    .map((key) => (sourceBook[key] && sourceBook[key].short) || key)
+    .join(' · ');
 }
 
 function filtered() {
@@ -104,11 +143,16 @@ function renderProgress() {
   progressText.textContent = done + ' / ' + total + ' trophies earned';
   progressPct.textContent = pct + '%';
   progressFill.style.width = pct + '%';
-  const remaining = total - done;
-  progressSub.textContent = done === total
-    ? 'Platinum earned: Vice Got a Price! — congratulations, Leonida Legend.'
-    : 'Platinum: Vice Got a Price! — ' + remaining + ' to go. ' +
-      'Next up: finish the story, then the 100% checklist.';
+  stickyText.textContent = done + ' / ' + total + ' trophies earned';
+  stickyPct.textContent = pct + '%';
+  stickyFill.style.width = pct + '%';
+  if (done === total) {
+    progressSub.textContent = 'Platinum earned: Vice Got a Price! — congratulations, Leonida Legend.';
+    return;
+  }
+  const next = trophies.find((t) => !earned.has(t.id));
+  progressSub.textContent = 'Platinum: Vice Got a Price! — ' + (total - done) + ' to go. ' +
+    'Next up: ' + next.name + ' — ' + previewText(next);
 }
 
 function renderList() {
@@ -144,6 +188,17 @@ function renderList() {
     desc.textContent = hidden
       ? 'Story spoiler hidden — earn this trophy to reveal its name and description.'
       : t.description;
+    body.append(name, desc);
+    if (!hidden) {
+      const preview = document.createElement('span');
+      preview.className = 'trophy-guide-preview';
+      preview.textContent = previewText(t);
+      body.appendChild(preview);
+      const srcs = document.createElement('span');
+      srcs.className = 'trophy-sources';
+      srcs.textContent = 'Sources: ' + sourceNames(t);
+      body.appendChild(srcs);
+    }
     const meta = document.createElement('span');
     meta.className = 'trophy-meta';
     const grade = document.createElement('span');
@@ -173,7 +228,13 @@ function renderList() {
       tg.textContent = target;
       meta.appendChild(tg);
     }
-    body.append(name, desc, meta);
+    if (t.target !== null && t.target !== undefined && (counts[t.id] || 0) > 0) {
+      const prog = document.createElement('span');
+      prog.className = 'count';
+      prog.textContent = 'Progress: ' + formatCount(t, counts[t.id]) + ' / ' + formatCount(t, t.target);
+      meta.appendChild(prog);
+    }
+    body.appendChild(meta);
     li.append(check, body);
     listEl.appendChild(li);
   }
@@ -234,6 +295,31 @@ function renderDetail() {
   document.getElementById('detailGuide').textContent = hidden
     ? 'The guide for this story trophy is hidden until you earn it.'
     : t.guide;
+  const progBox = document.getElementById('detailProgress');
+  if (t.target !== null && t.target !== undefined && !hidden) {
+    progBox.hidden = false;
+    const stepValue = document.getElementById('stepValue');
+    const paint = () => {
+      stepValue.textContent = formatCount(t, counts[t.id] || 0) + ' / ' + formatCount(t, t.target);
+    };
+    paint();
+    document.getElementById('stepDown').onclick = () => {
+      const next = Math.max(0, (counts[t.id] || 0) - stepSize(t));
+      if (next === 0) delete counts[t.id]; else counts[t.id] = next;
+      if (next < t.target) earned.delete(t.id);
+      saveStored();
+      renderAll();
+    };
+    document.getElementById('stepUp').onclick = () => {
+      const next = Math.min(t.target, (counts[t.id] || 0) + stepSize(t));
+      counts[t.id] = next;
+      if (next >= t.target) earned.add(t.id);
+      saveStored();
+      renderAll();
+    };
+  } else {
+    progBox.hidden = true;
+  }
   const srcList = document.getElementById('detailSources');
   srcList.innerHTML = '';
   for (const key of t.sources) {
@@ -289,6 +375,7 @@ function exportProgress() {
     game: 'Grand Theft Auto VI',
     exportedAt: new Date().toISOString(),
     earned: [...earned].sort((a, b) => a - b),
+    counts,
     spoiler: spoilerOn,
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -312,6 +399,15 @@ function importProgress(file) {
       const valid = new Set(trophies.map((t) => t.id));
       const kept = ids.filter((n) => Number.isInteger(n) && valid.has(n));
       earned = new Set(kept);
+      if (parsed.counts && typeof parsed.counts === 'object') {
+        counts = {};
+        for (const [key, value] of Object.entries(parsed.counts)) {
+          const id = Number.parseInt(key, 10);
+          if (Number.isInteger(id) && valid.has(id) && Number.isInteger(value) && value > 0) {
+            counts[id] = value;
+          }
+        }
+      }
       if (typeof parsed.spoiler === 'boolean') {
         spoilerOn = parsed.spoiler;
         spoilerEl.checked = spoilerOn;
@@ -385,6 +481,7 @@ async function init() {
   document.getElementById('resetBtn').addEventListener('click', () => {
     if (window.confirm('Reset all progress? This clears every earned trophy.')) {
       earned = new Set();
+      counts = {};
       openId = null;
       detailEl.hidden = true;
       saveStored();

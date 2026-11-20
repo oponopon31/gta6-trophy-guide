@@ -8,6 +8,12 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="sticky-progress" aria-label="Platinum progress, always visible">
+  <span class="sticky-title">Leonida Platinum</span>
+  <span id="stickyText" class="sticky-text">0 / 55 trophies earned</span>
+  <span class="sticky-bar"><span id="stickyFill" style="width:0%"></span></span>
+  <span id="stickyPct" class="sticky-pct">0%</span>
+</div>
 <header class="masthead">
   <div class="masthead-inner">
     <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
@@ -28,15 +34,18 @@
     <ol class="steps">
       <li>
         <h3>Step 1 &mdash; Finish the story <span class="hours">60&ndash;80 hours</span></h3>
-        <p>Play the 5 chapters and take optional missions as they appear. Scan vehicles and study animals as you go — progress toward the 100% checklist already counts during the story, even though the checklist itself only becomes visible afterwards (Progress &gt; Stats &gt; 100% Completion). <strong>Do the Chapter 1 balcony meditation</strong> (see the missable box below) and keep a manual save at the start and end of every chapter.</p>
+        <p>Play the 5 chapters and take optional missions as they appear. Scan vehicles and study animals as you go — progress toward the 100% checklist already counts during the story, even though the checklist itself only becomes visible afterwards. <strong>Do the Chapter 1 balcony meditation</strong> (see the missable box below) and keep a manual save at the start and end of every chapter.</p>
+        <p class="earns">Earns: all 12 story trophies, plus the first meditation toward Positive Mental Attitude.</p>
       </li>
       <li>
         <h3>Step 2 &mdash; The 100% Completion Checklist <span class="hours">~100 hours</span></h3>
         <p>After the story, work through the checklist. It is lenient — closer to 60% true completion: any 200 of 277 base-model vehicles, any 100 of 255 animals, any 70 of 80 challenges, any 100 optional missions. Only robberies, underwater discoveries, shooting ranges, drone races and Bret&rsquo;s quests need to be done in full. This step earns <strong>A Long Road</strong> (gold) and most of the remaining trophies on its own.</p>
+        <p class="earns">Earns: A Long Road (gold) and most of the remaining trophies — stunts, challenges, robberies, collections.</p>
       </li>
       <li>
         <h3>Step 3 &mdash; Strangers &amp; Freaks and cleanup <span class="hours">~10 hours</span></h3>
-        <p>Strangers &amp; Freaks strands are not part of 100%, so finish the 8 counting strands (Kirk, Kyle, Yago, Pilot Pete and more), then mop up whatever is left on the list. The platinum pops when the last trophy does.</p>
+        <p>Strangers &amp; Freaks strands are not part of 100%, so finish the 8 counting strands (Kirk, Kyle, Yago, Pilot Pete), then mop up the rest. The platinum pops when the last trophy does.</p>
+        <p class="earns">Earns: the last Strangers &amp; Freaks strands and the platinum itself — Vice Got a Price!</p>
       </li>
     </ol>
     <div class="missable-box" role="note">
@@ -109,6 +118,15 @@
     <div id="detailBadges" class="detail-badges"></div>
     <h3>How to earn it</h3>
     <p id="detailGuide" class="detail-guide"></p>
+    <div id="detailProgress" class="detail-progress" hidden>
+      <h3>Your progress</h3>
+      <div class="stepper">
+        <button id="stepDown" type="button" aria-label="Decrease progress">&minus;</button>
+        <span id="stepValue">0 / 0</span>
+        <button id="stepUp" type="button" aria-label="Increase progress">+</button>
+      </div>
+      <p class="stepper-note">Reach the target and the trophy is marked earned automatically. Progress saves with the rest of your tracker.</p>
+    </div>
     <h3>Sources</h3>
     <ul id="detailSources" class="detail-sources"></ul>
     <label class="detail-earned"><input id="detailEarned" type="checkbox"> I have earned this trophy</label>
@@ -116,7 +134,7 @@
 
   <section class="about" aria-label="About this guide">
     <h2>About this guide</h2>
-    <p>Names, descriptions and grades are the official PlayStation 5 trophy list as published on PSN, via Exophase and PSNProfiles (18 Nov 2026) — the two trackers agree on all 55. Each guide is written in this guide&rsquo;s own words; every specific step, count or location cites its source, and anything the guides have not confirmed is labelled <strong>UNCONFIRMED</strong> or as an inference from the official description, not as a fact. Four trophies are unconfirmed at the time of writing: In The Beginning…, Bad Luck, I Guess, The Truth Is Out There and Ten Pin. No Rockstar logo, box art or game screenshot is used anywhere in this app.</p>
+    <p>Names, descriptions and grades are the official PlayStation 5 trophy list as published on PSN, via Exophase and PSNProfiles (18 Nov 2026) — the two trackers agree on all 55. Each guide is written in this guide&rsquo;s own words; every specific step, count or location cites its source, and anything the guides have not confirmed is labelled <strong>UNCONFIRMED</strong> or as an inference from the official description, not as a fact. Two trophies are still unconfirmed at the time of writing: In The Beginning… and Bad Luck, I Guess. Two more were confirmed by PowerPyx on 20 Nov 2026 — Ten Pin (kick 10 pedestrians from a bike within 60 seconds) and The Truth Is Out There (the UFO easter egg). No Rockstar logo, box art or game screenshot is used anywhere in this app.</p>
     <h3>Sources</h3>
     <ul class="source-list">
       <li>Exophase — Grand Theft Auto VI trophy list: <span class="url">https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/</span></li>

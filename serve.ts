@@ -36,7 +36,17 @@ const server = createServer(async (req, res) => {
     }
     const info = await stat(file);
     if (!info.isFile()) throw new Error('not a file');
-    res.writeHead(200, { 'content-type': types[extname(file)] || 'application/octet-stream' });
+    const headers = {
+      'content-type': types[extname(file)] || 'application/octet-stream',
+      'content-length': info.size,
+    };
+    if (req.method === 'HEAD') {
+      // HEAD asks for headers only: same headers as GET, no body.
+      res.writeHead(200, headers);
+      res.end();
+      return;
+    }
+    res.writeHead(200, headers);
     createReadStream(file).pipe(res);
   } catch (_err) {
     res.writeHead(404);

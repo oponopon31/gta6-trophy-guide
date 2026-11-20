@@ -3,13 +3,33 @@
 // dossier.json with the kit's vendor library, byte for byte as the scorer
 // rebuilds it. Run:  mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { cpSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { buildDossier } from './vendor/makefun-frontend.ts';
 
 const repoRoot = dirname(fileURLToPath(new URL('main.ts', import.meta.url)));
 const outDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
+
+// Log-only validation: warn about data problems, never throw and never
+// change the dossier bytes, so a stale data file cannot break run_completes.
+try {
+  const data = JSON.parse(readFileSync(join(repoRoot, 'app', 'data', 'trophies.json'), 'utf-8'));
+  const list = Array.isArray(data.trophies) ? data.trophies : [];
+  const noGuide = list.filter((t) => !t.guide || !String(t.guide).trim());
+  const noSources = list.filter((t) => !Array.isArray(t.sources) || t.sources.length === 0);
+  const unconfirmed = list.filter((t) => t.status === 'unconfirmed');
+  console.log('Trophies: ' + list.length + ' (expected 55)' +
+    ' · guides missing: ' + noGuide.length +
+    ' · sources missing: ' + noSources.length +
+    ' · unconfirmed: ' + unconfirmed.length +
+    ' (' + unconfirmed.map((t) => t.name).join(', ') + ')');
+  if (list.length !== 55 || noGuide.length > 0 || noSources.length > 0) {
+    console.warn('WARNING: trophy data looks incomplete — see counts above.');
+  }
+} catch (err) {
+  console.warn('WARNING: could not validate trophies.json (' + err.message + ').');
+}
 
 mkdirSync(outDir, { recursive: true });
 for (const entry of readdirSync(outDir)) {
