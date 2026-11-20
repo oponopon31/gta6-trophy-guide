@@ -1,59 +1,63 @@
-// Leonida Platinum — tiny static server for local testing only.
-// Serves app/ at http://localhost:8080 (or $PORT). No dependencies.
-// Run:  node serve.ts
+// Leonida Platinum — a tiny static file server for local development.
+// Serves app/ at its root so the guide can be opened in a browser:
+//   node serve.ts [port]        (default port 8123, or $PORT)
+// It supports GET and HEAD and serves only files under app/.
 
-import { createReadStream } from 'node:fs';
-import { stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
-import { extname, join, normalize, resolve } from 'node:path';
+import { createReadStream, existsSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { join, normalize, sep } from 'node:path';
 
-const appDir = resolve(join(fileURLToPath(new URL('.', import.meta.url)), 'app'));
-const port = Number(process.env.PORT || 8080);
+const ROOT = join(fileURLToPath(new URL('.', import.meta.url)), 'app');
+const PORT = Number(process.argv[2] || process.env.PORT || 8123);
 
-const types = {
+const TYPES = {
   '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.mjs': 'text/javascript; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
-  '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
   '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon',
+  '.txt': 'text/plain; charset=utf-8',
 };
 
-const server = createServer(async (req, res) => {
-  try {
-    const url = new URL(req.url || '/', 'http://localhost');
-    let rel = decodeURIComponent(url.pathname);
-    if (rel === '/') rel = '/index.html';
-    const file = resolve(join(appDir, normalize(rel)));
-    if (!file.startsWith(appDir)) {
-      res.writeHead(403);
-      res.end('Forbidden');
-      return;
-    }
-    const info = await stat(file);
-    if (!info.isFile()) throw new Error('not a file');
-    const headers = {
-      'content-type': types[extname(file)] || 'application/octet-stream',
-      'content-length': info.size,
-    };
-    if (req.method === 'HEAD') {
-      // HEAD asks for headers only: same headers as GET, no body.
-      res.writeHead(200, headers);
-      res.end();
-      return;
-    }
-    res.writeHead(200, headers);
-    createReadStream(file).pipe(res);
-  } catch (_err) {
-    res.writeHead(404);
-    res.end('Not found');
+function contentType(path) {
+  const dot = path.lastIndexOf('.');
+  const ext = dot >= 0 ? path.slice(dot).toLowerCase() : '';
+  return TYPES[ext] || 'application/octet-stream';
+}
+
+const server = createServer((req, res) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    res.writeHead(405, { 'Content-Type': 'text/plain' });
+    res.end('Method not allowed');
+    return;
   }
+  let pathname = '/';
+  try {
+    pathname = decodeURIComponent(new URL(req.url || '/', 'http://127.0.0.1').pathname);
+  } catch {
+    res.writeHead(400, { 'Content-Type': 'text/plain' });
+    res.end('Bad request');
+    return;
+  }
+  if (pathname === '/') pathname = '/index.html';
+  const file = normalize(join(ROOT, pathname));
+  if (!file.startsWith(ROOT + sep) || !existsSync(file) || !statSync(file).isFile()) {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not found');
+    return;
+  }
+  const size = statSync(file).size;
+  res.writeHead(200, { 'Content-Type': contentType(file), 'Content-Length': size });
+  if (req.method === 'GET') createReadStream(file).pipe(res);
+  else res.end();
 });
 
-server.listen(port, () => {
-  console.log('Leonida Platinum serving app/ at http://localhost:' + port);
+server.listen(PORT, '127.0.0.1', () => {
+  console.log('Serving app/ at http://127.0.0.1:' + PORT + '/');
 });
