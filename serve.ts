@@ -1,63 +1,69 @@
-// Leonida Platinum — a tiny static file server for local development.
-// Serves app/ at its root so the guide can be opened in a browser:
-//   node serve.ts [port]        (default port 8123, or $PORT)
-// It supports GET and HEAD and serves only files under app/.
-
+// A tiny static server for app/ (Node 22, standard library only), so the guide can be run locally without a
+// build step: `node serve.ts` serves app/ on http://localhost:8080 (`--port <n>` for another port). It sends the MIME
+// types a browser needs, refuses any path outside app/, supports HEAD (headers only, no body), and otherwise does
+// nothing clever: this is a development convenience, not a web server for the internet.
+import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
-import { createReadStream, existsSync, statSync } from 'node:fs';
+import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { join, normalize, sep } from 'node:path';
 
-const ROOT = join(fileURLToPath(new URL('.', import.meta.url)), 'app');
-const PORT = Number(process.argv[2] || process.env.PORT || 8123);
+const root = resolve(fileURLToPath(new URL('./app', import.meta.url)));
+const args = process.argv.slice(2);
+const portIndex = args.indexOf('--port');
+const requested = portIndex === -1 ? 8080 : Number(args[portIndex + 1]);
+const port = Number.isInteger(requested) && requested > 0 && requested < 65536 ? requested : 8080;
 
-const TYPES = {
+const MIME: Record<string, string> = {
   '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.mjs': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.svg': 'image/svg+xml',
+  '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
-  '.png': 'image/png',
-  '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
   '.ico': 'image/x-icon',
-  '.txt': 'text/plain; charset=utf-8',
+  '.woff2': 'font/woff2',
+  '.webmanifest': 'application/manifest+json',
 };
 
-function contentType(path) {
-  const dot = path.lastIndexOf('.');
-  const ext = dot >= 0 ? path.slice(dot).toLowerCase() : '';
-  return TYPES[ext] || 'application/octet-stream';
-}
-
-const server = createServer((req, res) => {
-  if (req.method !== 'GET' && req.method !== 'HEAD') {
-    res.writeHead(405, { 'Content-Type': 'text/plain' });
-    res.end('Method not allowed');
-    return;
-  }
-  let pathname = '/';
+createServer((request, response) => {
+  const url = new URL(request.url ?? '/', 'http://localhost');
+  let pathname: string;
   try {
-    pathname = decodeURIComponent(new URL(req.url || '/', 'http://127.0.0.1').pathname);
+    pathname = decodeURIComponent(url.pathname);
   } catch {
-    res.writeHead(400, { 'Content-Type': 'text/plain' });
-    res.end('Bad request');
+    response.writeHead(400).end('bad request');
     return;
   }
-  if (pathname === '/') pathname = '/index.html';
-  const file = normalize(join(ROOT, pathname));
-  if (!file.startsWith(ROOT + sep) || !existsSync(file) || !statSync(file).isFile()) {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Not found');
+  if (pathname.endsWith('/')) pathname += 'index.html';
+  const file = resolve(join(root, normalize(pathname)));
+  if (file !== root && !file.startsWith(root + sep)) {
+    response.writeHead(403).end('forbidden');
     return;
   }
-  const size = statSync(file).size;
-  res.writeHead(200, { 'Content-Type': contentType(file), 'Content-Length': size });
-  if (req.method === 'GET') createReadStream(file).pipe(res);
-  else res.end();
-});
-
-server.listen(PORT, '127.0.0.1', () => {
-  console.log('Serving app/ at http://127.0.0.1:' + PORT + '/');
+  let size: number;
+  try {
+    const stats = statSync(file);
+    if (!stats.isFile()) throw new Error('not a file');
+    size = stats.size;
+  } catch {
+    response.writeHead(404).end('not found');
+    return;
+  }
+  const headers = {
+    'content-type': MIME[extname(file).toLowerCase()] ?? 'application/octet-stream',
+    'content-length': size,
+    'cache-control': 'no-store',
+  };
+  if (request.method === 'HEAD') {
+    response.writeHead(200, headers).end();
+    return;
+  }
+  response.writeHead(200, headers);
+  createReadStream(file).pipe(response);
+}).listen(port, '127.0.0.1', () => {
+  console.log(`app/ is on http://localhost:${port}`);
 });
