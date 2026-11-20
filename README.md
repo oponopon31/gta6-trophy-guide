@@ -1,58 +1,41 @@
-[![make.fun](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![rank](https://make.fun/badge/gta6-trophy-guide-01/oponopon31/gta6-trophy-guide/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![reward](https://make.fun/badge/gta6-trophy-guide-01/oponopon31/gta6-trophy-guide/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![make.fun](https://img.shields.io/badge/make.fun-bounty-blue)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![GTA VI trophy guide](https://img.shields.io/badge/GTA%20VI-trophy%20guide-gold)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Leonida Atlas](https://img.shields.io/badge/Leonida%20Atlas-55%20trophies-green)](https://make.fun/bounty/gta6-trophy-guide-01)
 
-# Leonida Atlas — GTA VI Trophy Guide & Tracker
+# Leonida Atlas — GTA VI trophy guide
 
-The complete GTA 6 trophy guide as an offline atlas: all 55 official trophies
-(1 platinum · 2 gold · 6 silver · 46 bronze; 28 hidden story trophies), a
-tracker that saves in your browser, a roadmap to the platinum, and a guide to
-every trophy written in our own words — **222 steps, every one cited**
-(PowerPyx, PSNProfiles, Exophase, TrueTrophies, Game8, IGN).
+The complete Grand Theft Auto VI trophy guide for PlayStation 5: all 55 official trophies (1 platinum, 2 gold, 6 silver, 46 bronze), every guide step cited to a source, a tracker that saves your progress, a roadmap to the platinum, and an atlas map of Leonida.
 
-## What makes it an atlas, not a list
+Built for the [make.fun bounty gta6-trophy-guide-01](https://make.fun/bounty/gta6-trophy-guide-01).
 
-- **Audit bar** — 222 steps cited · 53/55 confirmed · 2 unconfirmed, with a
-  per-grade cited breakdown (Platinum 1/1 · Gold 2/2 · Silver 6/6 ·
-  Bronze 44/46) and the sources named.
-- **Step-level citations** — every guide is numbered steps, each step carrying
-  its own source tag, e.g. `[PowerPyx]`. No credit is claimed for a step that
-  cites nothing.
-- **Numeric steppers** — 23 targeted trophies get − / + steppers (250 stunts,
-  18 meditation spots, $250,000 laundering, 100 WAiNK spots, 500 choices…),
-  saved in your browser; reaching the target auto-marks the trophy earned.
-- **Atlas of Leonida** — a stylised map of the state (Vice City, Kelly County,
-  Leonida Keys, Ambar, Ocean Beach) with the platinum route drawn across it.
-- **Roadmap** — story first, people & places, then cleanup; the one possibly
-  missable trophy (Positive Mental Attitude, 18 meditation spots) is flagged
-  up front.
-- **Tracker** — search, grade and kind filters, a spoiler setting that hides
-  story trophies until earned, export / import / share, sticky progress with a
-  "Next up" line.
+## What is in here
 
-## Confirmed, and honestly unconfirmed
+- **265 cited guide steps** — every step of every trophy carries its own source: Exophase, PSNProfiles, PowerPyx, TrueTrophies, Game8, IGN, GameRant, Eurogamer, Push Square.
+- **Audit bar** — 265 steps cited · 53/55 confirmed · 2 unconfirmed, plus per-grade confirmation (Platinum 1/1 · Gold 2/2 · Silver 6/6 · Bronze 44/46) and the last verification date (2026-11-20).
+- **Leonida Atlas** — a map of Leonida (Vice City, Kelly County, Ambar, Leonida Keys, Ocean Beach) with the platinum route and 8 trophy markers.
+- **Tracker** — check trophies off, numeric steppers for the 23 counter trophies (auto-earn at the target), search, grade filter, spoiler setting, export/import, share link.
+- **Roadmap** — 3 steps to the platinum, with the one possibly missable trophy flagged (Positive Mental Attitude, #28).
+- **Confirmed secrets** — Ten Pin (#51) and the UFO (#50) are confirmed with exact methods; the 2 unconfirmed trophies (#44, #49) are flagged as such.
 
-- **Ten Pin** and **The Truth Is Out There** are CONFIRMED (motorbike/bicycle
-  kick of 10 pedestrians in 60s on Ocean Beach; UFO on the road NW of Starlet
-  Motel, Kelly County, after 02:00, solo, headlights flashing).
-- **2 trophies are unconfirmed** and say so in the guide: #44 In The
-  Beginning… and #49 Bad Luck, I Guess (PowerPyx: currently unknown, believed
-  related to the Payday Loans store from the Prologue).
+## How to run it
 
-## Run it
-
-Static files, no build step, no network — open `app/index.html`, or:
+Serve `app/` locally and open it in a browser:
 
 ```sh
-node serve.ts        # then open http://localhost:8080
+node serve.ts
+# then open http://localhost:8080
 ```
 
-Build the dossier the judge reads:
+Or build the dossier the judge reads:
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-## License
+No build step, no network loads — plain static files (HTML, CSS, ES modules).
 
-MIT — see LICENSE.
+## Sources
+
+Trophy names, descriptions and grades: Exophase + PSNProfiles (they agree on all 55). Guide details: PowerPyx (confirmed Ten Pin + UFO), TrueTrophies, Game8, IGN, GameRant, Eurogamer, Push Square. Two trophies (#44 In The Beginning…, #49 Bad Luck, I Guess) are still unconfirmed by every source and are marked as such in the guide.
+
+Not affiliated with Rockstar Games.
