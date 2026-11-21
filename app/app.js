@@ -1,270 +1,273 @@
-// Leonida Atlas — GTA VI trophy guide app.
-// Checklist + cited step guides + steppers + roadmap + atlas, all saved in localStorage.
-const KEY = 'gta6-trophy-checklist-v3';
-const STEP_KEY = 'gta6-trophy-steppers-v3';
+// Leonida Atlas — GTA VI trophy guide and tracker.
+// Checklist ticks persist in localStorage; export/import moves them between devices.
+// Every guide step carries its source; the audit bar counts are computed from the data.
+const KEY = 'gta6-trophy-checklist-v9';
+const STEP_KEY = 'gta6-trophy-steps-v9';
 const rowsEl = document.getElementById('rows');
-const guideEl = document.getElementById('guide');
-const searchEl = document.getElementById('search');
 const gradeEl = document.getElementById('grade');
+const categoryEl = document.getElementById('category');
+const searchEl = document.getElementById('search');
 const spoilerEl = document.getElementById('spoiler');
+const unearnedEl = document.getElementById('only-open');
+const params = new URLSearchParams(location.search);
 
 let earned = new Set(JSON.parse(localStorage.getItem(KEY) ?? '[]'));
-let steppers = JSON.parse(localStorage.getItem(STEP_KEY) ?? '{}');
+let doneSteps = new Set(JSON.parse(localStorage.getItem(STEP_KEY) ?? '[]'));
 const doc = await (await fetch('data/trophies.json')).json();
 const trophies = doc.trophies;
 
+const MARKERS = [
+  { x: 82, y: 62, trophy: 44, label: 'Ocean Beach — cocktail with a view' },
+  { x: 74, y: 18, trophy: 37, label: 'VCIA Airport — unscheduled departure' },
+  { x: 66, y: 46, trophy: 5, label: 'Vice City — Chapter 3' },
+  { x: 88, y: 86, trophy: 42, label: 'Leonida Keys — explore all 52 areas' },
+  { x: 48, y: 55, trophy: 46, label: 'Kolt & Associates bowling alley' },
+  { x: 38, y: 40, trophy: 45, label: 'Vehicle showroom — smash out' },
+  { x: 22, y: 62, trophy: 17, label: 'Shooting Range — 42 golds' },
+  { x: 14, y: 84, trophy: 20, label: 'Fishing spot — beat Cal' },
+  { x: 58, y: 28, trophy: 39, label: 'Jewelry store — rob undetected' },
+  { x: 30, y: 16, trophy: 28, label: 'Meditation grove — 18 spots (missable)' },
+];
+
 function save() {
   localStorage.setItem(KEY, JSON.stringify([...earned]));
-  localStorage.setItem(STEP_KEY, JSON.stringify(steppers));
+  localStorage.setItem(STEP_KEY, JSON.stringify([...doneSteps]));
 }
 
-function fmt(n) {
-  return n.toLocaleString('en-US');
+function dots(n) {
+  return '●'.repeat(n) + '○'.repeat(Math.max(0, 5 - n));
 }
 
-function renderAudit() {
-  const totalSteps = trophies.reduce((a, t) => a + t.steps.length, 0);
-  const confirmed = trophies.filter((t) => !t.unconfirmed).length;
-  const unconfirmed = trophies.filter((t) => t.unconfirmed);
-  const allSources = new Set();
-  trophies.forEach((t) => t.steps.forEach((s) => allSources.add(s.source)));
-  const stepperCount = trophies.filter((t) => t.stepper).length;
-  const pct = Math.round((confirmed / trophies.length) * 100);
-  document.getElementById('audit-line').textContent =
-    `${fmt(totalSteps)} steps cited · ${confirmed}/${trophies.length} confirmed · ${unconfirmed.length} unconfirmed`;
-  document.getElementById('audit-cells').innerHTML = '';
-  const cells = [
-    [`${fmt(totalSteps)}`, 'steps cited'],
-    [`${pct}%`, 'confirmed'],
-    [`${allSources.size}`, 'sources'],
-    [`${stepperCount}`, 'steppers'],
+function buildMap() {
+  const map = document.getElementById('map');
+  const lands = [
+    { left: '52%', top: '8%', width: '42%', height: '72%' },
+    { left: '6%', top: '6%', width: '38%', height: '52%' },
+    { left: '70%', top: '80%', width: '24%', height: '14%' },
   ];
-  for (const [num, label] of cells) {
+  for (const l of lands) {
     const d = document.createElement('div');
-    d.className = 'audit-cell';
-    const b = document.createElement('b');
-    b.textContent = num;
-    const s = document.createElement('span');
-    s.textContent = label;
-    d.append(b, s);
-    document.getElementById('audit-cells').append(d);
+    d.className = 'land';
+    Object.assign(d.style, { left: l.left, top: l.top, width: l.width, height: l.height });
+    map.append(d);
   }
-  const grades = ['platinum', 'gold', 'silver', 'bronze'];
-  const parts = grades.map((g) => {
-    const list = trophies.filter((t) => t.grade === g);
-    const ok = list.filter((t) => !t.unconfirmed).length;
-    const label = g[0].toUpperCase() + g.slice(1);
-    return `${label} ${ok}/${list.length}`;
-  });
-  document.getElementById('audit-grades').textContent = parts.join(' · ');
-  document.getElementById('audit-foot').textContent =
-    `Unconfirmed: ${unconfirmed.map((t) => `#${t.id} ${t.name}`).join(' · ')} — verified ${doc.verified} · sources: ${doc.sources.join(' · ')}`;
-}
-
-function medalFor(t) {
-  const m = document.createElement('span');
-  m.className = `medal ${t.grade[0]}`;
-  m.textContent = t.grade[0].toUpperCase();
-  m.title = t.grade;
-  return m;
-}
-
-function renderProgress() {
-  const n = earned.size;
-  const total = trophies.length;
-  const pct = Math.round((n / total) * 100);
-  document.getElementById('progress-text').textContent = `${n} / ${total} · ${pct}%`;
-  document.getElementById('progress-fill').style.width = `${pct}%`;
-  const next = trophies.find((t) => !earned.has(t.name));
-  const nextEl = document.getElementById('nextup');
-  if (!next) {
-    nextEl.textContent = 'Next up: platinum earned — Vice Got a Price!';
-  } else {
-    const first = next.steps[0] ? next.steps[0].text : next.guide;
-    nextEl.textContent = `Next up: #${next.id} ${next.name} — ${first}`;
+  const sea = document.createElement('span');
+  sea.className = 'sea-label';
+  sea.textContent = 'Atlantic Ocean';
+  Object.assign(sea.style, { left: '84%', top: '6%' });
+  map.append(sea);
+  const landLabel = document.createElement('span');
+  landLabel.className = 'land-label';
+  landLabel.textContent = 'Vice City';
+  Object.assign(landLabel.style, { left: '60%', top: '38%' });
+  map.append(landLabel);
+  const landLabel2 = document.createElement('span');
+  landLabel2.className = 'land-label';
+  landLabel2.textContent = 'Leonida mainland';
+  Object.assign(landLabel2.style, { left: '10%', top: '30%' });
+  map.append(landLabel2);
+  const compass = document.createElement('div');
+  compass.className = 'compass';
+  map.append(compass);
+  const legend = document.getElementById('legend');
+  for (const m of MARKERS) {
+    const t = trophies.find((x) => x.id === m.trophy);
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'marker';
+    b.style.left = m.x + '%';
+    b.style.top = m.y + '%';
+    b.textContent = String(m.trophy);
+    b.setAttribute('aria-label', m.label);
+    const tip = document.createElement('span');
+    tip.className = 'tip';
+    tip.textContent = m.label;
+    b.append(tip);
+    b.addEventListener('click', () => openGuide(m.trophy, true));
+    map.append(b);
+    const li = document.createElement('li');
+    li.innerHTML = '';
+    const num = document.createElement('b');
+    num.textContent = String(m.trophy) + ' — ';
+    li.append(num, document.createTextNode(m.label + (t ? ' · ' + t.name : '')));
+    legend.append(li);
   }
 }
 
-function renderRows() {
-  rowsEl.replaceChildren();
+function buildGradebar() {
+  const bar = document.getElementById('gradebar');
+  const counts = {};
+  for (const t of trophies) counts[t.grade] = (counts[t.grade] ?? 0) + 1;
+  for (const g of ['platinum', 'gold', 'silver', 'bronze']) {
+    const seg = document.createElement('div');
+    seg.className = 'grade-seg ' + g;
+    const pct = counts[g] / trophies.length * 100;
+    seg.style.width = pct + '%';
+    seg.textContent = pct >= 7 ? g + ' ' + counts[g] : '';
+    seg.title = g + ' ' + counts[g];
+    bar.append(seg);
+  }
+  document.getElementById('audit-steps').textContent =
+    trophies.reduce((n, t) => n + t.steps.length, 0);
+  document.getElementById('audit-confirmed').textContent =
+    (trophies.length - trophies.filter((t) => t.unconfirmed).length) + '/' + trophies.length;
+  document.getElementById('audit-sources').textContent = doc.sources.length;
+  document.getElementById('audit-missable').textContent =
+    trophies.filter((t) => t.missable).length + ' missable · ' +
+    trophies.filter((t) => t.unconfirmed).length + ' unconfirmed';
+}
+
+function buildCategories() {
+  const cats = [...new Set(trophies.map((t) => t.category))].sort();
+  for (const c of cats) {
+    const o = document.createElement('option');
+    o.value = c;
+    o.textContent = c.charAt(0).toUpperCase() + c.slice(1);
+    categoryEl.append(o);
+  }
+}
+
+function stepKey(tid, i) { return tid + ':' + i; }
+
+function openGuide(id, scroll) {
+  const det = document.querySelector('[data-guide-for="' + id + '"]');
+  if (!det) return;
+  det.hidden = false;
+  const btn = document.querySelector('[data-toggle-for="' + id + '"]');
+  if (btn) btn.textContent = 'Hide cited steps';
+  if (scroll) {
+    const row = det.closest('tr');
+    if (row) row.scrollIntoView({ block: 'center' });
+  }
+}
+
+function render() {
   const q = searchEl.value.trim().toLowerCase();
-  const g = gradeEl.value;
-  const hideSpoiler = spoilerEl.checked;
+  const grade = gradeEl.value;
+  const cat = categoryEl.value;
+  const hideEarned = unearnedEl.checked;
+  rowsEl.replaceChildren();
   let shown = 0;
   for (const t of trophies) {
-    if (g !== 'all' && t.grade !== g) continue;
-    if (hideSpoiler && t.hidden) continue;
-    const hay = (t.name + ' ' + t.description + ' ' + t.guide + ' ' + t.steps.map((s) => s.text).join(' ')).toLowerCase();
+    if (grade !== 'all' && t.grade !== grade) continue;
+    if (cat !== 'all' && t.category !== cat) continue;
+    if (hideEarned && earned.has(t.name)) continue;
+    const hay = (t.name + ' ' + t.description + ' ' + t.guide + ' ' +
+      t.steps.map((s) => s.text + ' ' + s.source).join(' ')).toLowerCase();
     if (q && !hay.includes(q)) continue;
     shown++;
-    const row = document.createElement('div');
-    row.className = 'trophy-row' + (earned.has(t.name) ? ' earned' : '');
-    row.dataset.id = t.id;
-    const head = document.createElement('div');
-    head.className = 'row-head';
+    const tr = document.createElement('tr');
+    if (earned.has(t.name)) tr.className = 'done';
+    const boxTd = document.createElement('td');
     const box = document.createElement('input');
     box.type = 'checkbox';
     box.checked = earned.has(t.name);
-    box.setAttribute('aria-label', `Mark ${t.name} earned`);
+    box.setAttribute('aria-label', 'Earned: ' + t.name);
     box.addEventListener('change', () => {
       if (box.checked) earned.add(t.name);
       else earned.delete(t.name);
       save();
-      renderProgress();
-      renderRows();
+      render();
     });
-    head.append(box, medalFor(t));
-    const main = document.createElement('div');
-    main.className = 'row-main';
-    const title = document.createElement('div');
-    title.className = 'row-title';
-    title.textContent = `#${t.id} ${t.name}`;
+    boxTd.append(box);
+    const nameTd = document.createElement('td');
+    const name = document.createElement('div');
+    name.className = 'tname';
+    name.textContent = t.id + '. ' + t.name;
     const desc = document.createElement('div');
-    desc.className = 'row-desc';
+    desc.className = 'tdesc';
     desc.textContent = t.description;
-    const preview = document.createElement('div');
-    preview.className = 'row-preview';
-    preview.textContent = t.guide;
-    const src = document.createElement('div');
-    src.className = 'row-sources';
-    src.textContent = `Sources: ${t.sources.join(' · ')}`;
-    main.append(title, desc, preview, src);
-    const tags = document.createElement('div');
-    tags.className = 'row-tags';
+    nameTd.append(name, desc);
+    const gradeTd = document.createElement('td');
+    const pill = document.createElement('span');
+    pill.className = 'grade-pill ' + t.grade;
+    pill.textContent = t.grade;
+    gradeTd.append(pill);
     if (t.missable) {
-      const m = document.createElement('span');
-      m.className = 'tag missable';
-      m.textContent = 'missable';
-      tags.append(m);
+      const f = document.createElement('span');
+      f.className = 'flag missable';
+      f.textContent = 'MISSABLE';
+      gradeTd.append(f);
     }
     if (t.unconfirmed) {
-      const u = document.createElement('span');
-      u.className = 'tag unconfirmed';
-      u.textContent = 'unconfirmed';
-      tags.append(u);
+      const f = document.createElement('span');
+      f.className = 'flag unconfirmed';
+      f.textContent = 'UNCONFIRMED';
+      gradeTd.append(f);
     }
-    if (t.stepper) {
-      const s = document.createElement('span');
-      s.className = 'tag stepper';
-      const cur = steppers[t.id] ?? 0;
-      s.textContent = `stepper ${cur} / ${fmt(t.stepper)}`;
-      tags.append(s);
-    }
-    const open = document.createElement('button');
-    open.type = 'button';
-    open.className = 'open-guide';
-    open.textContent = `${t.steps.length} steps ›`;
-    open.addEventListener('click', () => renderGuide(t));
-    row.append(head, main, tags, open);
-    rowsEl.append(row);
+    const timeTd = document.createElement('td');
+    const time = document.createElement('span');
+    time.className = 'time';
+    time.textContent = t.time;
+    const diff = document.createElement('span');
+    diff.className = 'diff';
+    diff.textContent = dots(t.difficulty);
+    diff.title = 'Difficulty ' + t.difficulty + ' of 5 (community estimate)';
+    const catEl = document.createElement('span');
+    catEl.className = 'cat';
+    catEl.textContent = t.category;
+    timeTd.append(time, diff, catEl);
+    const guideTd = document.createElement('td');
+    const g = document.createElement('p');
+    g.className = 'guide';
+    g.textContent = t.guide;
+    const det = document.createElement('div');
+    det.className = 'guide-detail';
+    det.hidden = true;
+    det.dataset.guideFor = String(t.id);
+    const ol = document.createElement('ol');
+    ol.className = 'steps';
+    t.steps.forEach((s, i) => {
+      const li = document.createElement('li');
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.className = 'step-check';
+      cb.checked = doneSteps.has(stepKey(t.id, i));
+      cb.setAttribute('aria-label', 'Step done');
+      cb.addEventListener('change', () => {
+        if (cb.checked) doneSteps.add(stepKey(t.id, i));
+        else doneSteps.delete(stepKey(t.id, i));
+        save();
+        updateProgress();
+      });
+      const span = document.createElement('span');
+      span.textContent = s.text;
+      const src = document.createElement('span');
+      src.className = 'src';
+      src.textContent = s.source;
+      li.append(cb, ' ', span, src);
+      ol.append(li);
+    });
+    det.append(ol);
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'guide-toggle';
+    toggle.dataset.toggleFor = String(t.id);
+    toggle.textContent = 'Show ' + t.steps.length + ' cited steps';
+    toggle.addEventListener('click', () => {
+      det.hidden = !det.hidden;
+      toggle.textContent = det.hidden
+        ? 'Show ' + t.steps.length + ' cited steps'
+        : 'Hide cited steps';
+    });
+    guideTd.append(g, det, toggle);
+    tr.append(boxTd, nameTd, gradeTd, timeTd, guideTd);
+    rowsEl.append(tr);
   }
-  document.getElementById('count').textContent = `${shown} of ${trophies.length} trophies shown · ${trophies.reduce((a, t) => a + t.steps.length, 0)} cited steps in total`;
+  document.getElementById('empty').hidden = shown !== 0;
+  updateProgress();
+  document.body.classList.toggle('spoiled', spoilerEl.checked);
 }
 
-function renderGuide(t) {
-  guideEl.hidden = false;
-  guideEl.replaceChildren();
-  const h = document.createElement('h2');
-  h.textContent = `#${t.id} ${t.name}`;
-  const meta = document.createElement('p');
-  meta.className = 'guide-meta';
-  meta.textContent = `${t.grade} · ${t.description} · Sources: ${t.sources.join(' · ')}`;
-  guideEl.append(h, meta);
-  if (t.missable) {
-    const w = document.createElement('p');
-    w.className = 'warn';
-    w.textContent = '⚠ Possibly missable — do this before the final mission.';
-    guideEl.append(w);
-  }
-  if (t.unconfirmed) {
-    const w = document.createElement('p');
-    w.className = 'warn';
-    w.textContent = '⚠ Unconfirmed — no guide site has verified this yet.';
-    guideEl.append(w);
-  }
-  if (t.stepper) {
-    const wrap = document.createElement('div');
-    wrap.className = 'stepper';
-    const minus = document.createElement('button');
-    minus.type = 'button';
-    minus.textContent = '−';
-    minus.setAttribute('aria-label', 'Decrease progress');
-    const val = document.createElement('span');
-    const cur = steppers[t.id] ?? 0;
-    val.textContent = `${fmt(cur)} / ${fmt(t.stepper)} spots`;
-    const plus = document.createElement('button');
-    plus.type = 'button';
-    plus.textContent = '+';
-    plus.setAttribute('aria-label', 'Increase progress');
-    const bump = (d) => {
-      const next = Math.max(0, Math.min(t.stepper, (steppers[t.id] ?? 0) + d));
-      steppers[t.id] = next;
-      if (next >= t.stepper) earned.add(t.name);
-      save();
-      renderProgress();
-      renderGuide(t);
-      renderRows();
-    };
-    minus.addEventListener('click', () => bump(-1));
-    plus.addEventListener('click', () => bump(1));
-    wrap.append(minus, val, plus);
-    guideEl.append(wrap);
-  }
-  const ol = document.createElement('ol');
-  ol.className = 'steps';
-  t.steps.forEach((s, i) => {
-    const li = document.createElement('li');
-    const tx = document.createElement('span');
-    tx.textContent = s.text;
-    const cite = document.createElement('span');
-    cite.className = 'cite';
-    cite.textContent = `[${s.source}]`;
-    li.append(tx, ' ', cite);
-    ol.append(li);
-  });
-  guideEl.append(ol);
-  const close = document.createElement('button');
-  close.type = 'button';
-  close.className = 'close-guide';
-  close.textContent = 'Close guide';
-  close.addEventListener('click', () => {
-    guideEl.hidden = true;
-    guideEl.replaceChildren();
-  });
-  guideEl.append(close);
-  guideEl.scrollIntoView({ behavior: 'instant', block: 'start' });
+function updateProgress() {
+  const totalSteps = trophies.reduce((n, t) => n + t.steps.length, 0);
+  document.getElementById('progress').textContent = earned.size + ' of ' + trophies.length + ' earned';
+  document.getElementById('progress-steps').textContent = doneSteps.size + ' of ' + totalSteps + ' steps done';
 }
-
-function applyParams() {
-  const p = new URLSearchParams(location.search);
-  const view = p.get('view');
-  if (view && ['checklist', 'roadmap', 'atlas'].includes(view)) setView(view);
-  const grade = p.get('grade');
-  if (grade && ['all', 'platinum', 'gold', 'silver', 'bronze'].includes(grade)) gradeEl.value = grade;
-  const q = p.get('search');
-  if (q) searchEl.value = q;
-  if (p.get('spoiler') === '1') spoilerEl.checked = true;
-}
-
-function setView(name) {
-  for (const b of document.querySelectorAll('.views button')) {
-    b.classList.toggle('active', b.dataset.view === name);
-  }
-  for (const v of document.querySelectorAll('.view')) {
-    v.hidden = v.id !== `view-${name}`;
-  }
-}
-
-document.querySelectorAll('.views button').forEach((b) => {
-  b.addEventListener('click', () => setView(b.dataset.view));
-});
-searchEl.addEventListener('input', renderRows);
-gradeEl.addEventListener('change', renderRows);
-spoilerEl.addEventListener('change', renderRows);
 
 document.getElementById('export').addEventListener('click', () => {
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([JSON.stringify({ earned: [...earned], steppers })], { type: 'application/json' }));
+  a.href = URL.createObjectURL(new Blob([JSON.stringify({ earned: [...earned], steps: [...doneSteps] }, null, 2)], { type: 'application/json' }));
   a.download = 'trophy-progress.json';
   a.click();
 });
@@ -272,38 +275,26 @@ document.getElementById('import').addEventListener('change', async (e) => {
   const file = e.target.files[0];
   if (!file) return;
   const data = JSON.parse(await file.text());
-  earned = new Set(data.earned ?? data);
-  steppers = data.steppers ?? {};
+  earned = new Set(Array.isArray(data) ? data : (data.earned ?? []));
+  doneSteps = new Set(data.steps ?? []);
   save();
-  renderProgress();
-  renderRows();
+  render();
 });
-document.getElementById('share').addEventListener('click', async () => {
-  const p = new URLSearchParams();
-  const view = document.querySelector('.views button.active').dataset.view;
-  if (view !== 'checklist') p.set('view', view);
-  if (gradeEl.value !== 'all') p.set('grade', gradeEl.value);
-  if (searchEl.value.trim()) p.set('search', searchEl.value.trim());
-  if (spoilerEl.checked) p.set('spoiler', '1');
-  const url = `${location.origin}${location.pathname}${p.toString() ? '?' + p.toString() : ''}`;
-  try {
-    await navigator.clipboard.writeText(url);
-    document.getElementById('share').textContent = 'Link copied!';
-    setTimeout(() => { document.getElementById('share').textContent = 'Copy share link'; }, 2000);
-  } catch {
-    prompt('Copy this link:', url);
-  }
-});
+gradeEl.addEventListener('change', render);
+categoryEl.addEventListener('change', render);
+searchEl.addEventListener('input', render);
+spoilerEl.addEventListener('change', render);
+unearnedEl.addEventListener('change', render);
 
-applyParams();
-renderAudit();
-renderProgress();
-renderRows();
-// Open a guide panel from ?guide=<id> AFTER the rows exist, so the scroll lands on it.
-{
-  const guideId = Number(new URLSearchParams(location.search).get('guide'));
-  if (Number.isInteger(guideId) && guideId > 0) {
-    const t = trophies.find((x) => x.id === guideId);
-    if (t) renderGuide(t);
-  }
+buildMap();
+buildGradebar();
+buildCategories();
+if (params.get('grade')) gradeEl.value = params.get('grade');
+render();
+if (params.get('guide')) openGuide(Number(params.get('guide')), true);
+if (params.get('view') === 'roadmap') {
+  document.getElementById('roadmap').scrollIntoView();
+} else if (params.get('view') === 'atlas') {
+  document.getElementById('atlas').scrollIntoView();
 }
+if (params.get('scroll')) window.scrollBy(0, Number(params.get('scroll')));

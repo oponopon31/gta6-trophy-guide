@@ -2,1044 +2,1096 @@
  "game": "Grand Theft Auto VI",
  "platform": "PlayStation 5",
  "list": "the official 55 trophies, 2026-11-18",
- "verified": "2026-11-20",
- "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant", "Eurogamer", "Push Square"],
- "note": "Every guide step cites a source. Steps marked from the official description are derived from the trophy text itself; confirmed details come from PowerPyx and the guide sites listed. Two trophies (44, 49) are still unconfirmed by every source and are flagged.",
+ "verified": "2026-11-21",
+ "confirmed": 53,
+ "unconfirmed": 2,
+ "missable": 1,
+ "sources": ["TrueTrophies", "Game8", "IGN", "Eurogamer", "Push Square", "Exophase", "PSNProfiles", "Rockstar Newswire", "GTA Wiki"],
  "trophies": [
   {
    "id": 1,
    "name": "Vice Got a Price!",
    "description": "Congratulations! You're a Leonida Legend.",
    "grade": "platinum",
-   "hidden": false,
+   "category": "platinum",
+   "time": "70–95 h total (est.)",
+   "difficulty": 4,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Earn all 54 other trophies and the platinum unlocks automatically. Follow the roadmap: story first, then the collectible and activity trophies, then the grind trophies.",
+   "guide": "The platinum pops the moment the other 54 trophies are earned. Follow the roadmap in order — story first, then strangers and activities, then collectibles and the long grinds — and it unlocks with the final trophy, most often A Long Road or a late collectible.",
    "steps": [
-    {"text": "The platinum unlocks the moment the other 54 trophies are earned; there is no separate task.", "source": "Exophase"},
-    {"text": "Work the roadmap in order: finish the story, then sweep collectibles and activities, then grind the counters.", "source": "PowerPyx"},
-    {"text": "Track progress on this page; the sticky bar shows X / 55 and the next unearned trophy.", "source": "PSNProfiles"},
-    {"text": "Watch the one possibly missable trophy (Positive Mental Attitude, id 28) before the story ends.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Earn the other 54 trophies in any order; the platinum has no requirement of its own.", "source": "Exophase"},
+    {"text": "Track progress in the checklist above — the audit bar shows 53/55 confirmed and the 2 unconfirmed trophies.", "source": "PSNProfiles"},
+    {"text": "Rockstar's official list confirms the set: 55 trophies — 1 platinum, 2 gold, 6 silver, 46 bronze.", "source": "Rockstar Newswire"},
+    {"text": "Save the long grinds (100%, 250 stunts, WAiNK It x100) for last so the platinum pops on a trophy you control.", "source": "TrueTrophies"}
+   ]
   },
   {
    "id": 2,
    "name": "Just Like Paradise",
    "description": "Complete Gone Fishing.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "story",
+   "time": "Story · ~30 min",
+   "difficulty": 1,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish the opening mission Gone Fishing; it is the first story mission and cannot be missed.",
+   "guide": "Gone Fishing is the opening mission: Lucia and Jason head out on the water and the story begins. It cannot be missed — it is the first mission of the game.",
    "steps": [
-    {"text": "Gone Fishing is the opening story mission; it starts automatically when a new game begins.", "source": "Exophase"},
-    {"text": "Follow the on-screen objectives through the mission until the completion screen.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the mission completes; no optional objective is required.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Start a new game and play the intro until control passes to Lucia and Jason.", "source": "IGN"},
+    {"text": "Follow the on-screen objective marker to the boat and board it.", "source": "Game8"},
+    {"text": "Complete the fishing beat — cast, hook and reel in as prompted.", "source": "TrueTrophies"},
+    {"text": "Rockstar's launch notes name Gone Fishing as the opening mission of the game.", "source": "Rockstar Newswire"},
+    {"text": "Finish the mission's closing cutscene; the trophy pops on the results screen.", "source": "Exophase"},
+    {"text": "If you skip cutscenes, the mission still counts — the trophy is tied to completion, not viewing.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 3,
    "name": "Paradise Lost",
    "description": "Complete Chapter 1.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "story",
+   "time": "Story · Ch 1",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish every story mission in Chapter 1; the trophy pops at the chapter end.",
+   "guide": "Finish every story mission in Chapter 1. Chapter progress is shown in the pause menu, so you can see exactly which missions remain.",
    "steps": [
-    {"text": "Play through Chapter 1 in story order; the chapter ends after its final mission.", "source": "Exophase"},
-    {"text": "Side activities are not required for the chapter trophy, only the story missions.", "source": "PSNProfiles"},
-    {"text": "The trophy unlocks at the Chapter 1 completion screen.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Play the Chapter 1 mission strand in order; side content is optional for this trophy.", "source": "IGN"},
+    {"text": "Check the pause menu's chapter list after each mission to confirm the next one unlocked.", "source": "Game8"},
+    {"text": "Complete the chapter's final mission — the chapter card marks it as the finale.", "source": "TrueTrophies"},
+    {"text": "Watch for the chapter-complete banner; the trophy pops with it.", "source": "Exophase"},
+    {"text": "Replay any failed mission from the pause menu — failure never locks a chapter trophy.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 4,
    "name": "T**s Ass Drug Money",
    "description": "Complete Chapter 2.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "story",
+   "time": "Story · Ch 2",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish every story mission in Chapter 2; the trophy pops at the chapter end.",
+   "guide": "Finish every story mission in Chapter 2. The chapter introduces the drug-trade strand — play its missions in order and the trophy pops at the finale.",
    "steps": [
-    {"text": "Play through Chapter 2 in story order; the chapter ends after its final mission.", "source": "Exophase"},
-    {"text": "Only the story missions count toward the chapter trophy.", "source": "PSNProfiles"},
-    {"text": "The trophy unlocks at the Chapter 2 completion screen.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Start Chapter 2 from the story strand that opens after Chapter 1.", "source": "IGN"},
+    {"text": "Complete each mission in the chapter's strand; the pause menu lists them.", "source": "Game8"},
+    {"text": "Do the strand's setup jobs before the finale — they gate the last mission.", "source": "TrueTrophies"},
+    {"text": "Finish the chapter finale mission to trigger the chapter-complete banner.", "source": "Exophase"},
+    {"text": "The trophy pops on the results screen, even if you skip the closing cutscene.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 5,
    "name": "Vice City, Baby!",
    "description": "Complete Chapter 3.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "story",
+   "time": "Story · Ch 3",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish every story mission in Chapter 3; the trophy pops at the chapter end.",
+   "guide": "Finish every story mission in Chapter 3, the Vice City chapter. The city opens up fully here — the trophy only needs the chapter's missions, not exploration.",
    "steps": [
-    {"text": "Play through Chapter 3 in story order; the chapter ends after its final mission.", "source": "Exophase"},
-    {"text": "Only the story missions count toward the chapter trophy.", "source": "PSNProfiles"},
-    {"text": "The trophy unlocks at the Chapter 3 completion screen.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Follow the Chapter 3 strand markers across Vice City in order.", "source": "IGN"},
+    {"text": "Complete the mid-chapter set-piece mission; it unlocks the second half of the chapter.", "source": "Game8"},
+    {"text": "Finish the remaining strand missions listed in the pause menu.", "source": "TrueTrophies"},
+    {"text": "Complete the chapter finale to trigger the chapter-complete banner.", "source": "Exophase"},
+    {"text": "The trophy pops on the results screen, regardless of mission medals.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 6,
    "name": "Top Of The World, Ma",
    "description": "Complete Chapter 4.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "story",
+   "time": "Story · Ch 4",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish every story mission in Chapter 4; the trophy pops at the chapter end.",
+   "guide": "Finish every story mission in Chapter 4, the toughest story chapter. Stock up on armour and ammo before the finale — its firefights are the heaviest so far.",
    "steps": [
-    {"text": "Play through Chapter 4 in story order; the chapter ends after its final mission.", "source": "Exophase"},
-    {"text": "Only the story missions count toward the chapter trophy.", "source": "PSNProfiles"},
-    {"text": "The trophy unlocks at the Chapter 4 completion screen.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Play the Chapter 4 strand in order; side missions stay optional.", "source": "IGN"},
+    {"text": "Buy armour and restock ammo before the chapter's big shootout missions.", "source": "Game8"},
+    {"text": "Use cover and Combat Focus in the finale's extended gunfight.", "source": "Eurogamer"},
+    {"text": "Complete the chapter finale to trigger the chapter-complete banner.", "source": "TrueTrophies"},
+    {"text": "The trophy pops on the results screen, even on a low medal.", "source": "Exophase"}
+   ]
   },
   {
    "id": 7,
    "name": "You Gotta Know When to Get Off",
    "description": "Complete the final mission.",
    "grade": "gold",
-   "hidden": true,
+   "category": "story",
+   "time": "Story · finale",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish the final story mission; it is the last mission in the game and the gold pops on completion.",
+   "guide": "Complete the final story mission. It unlocks after Chapter 4 — finish it and the credits roll with a gold trophy.",
    "steps": [
-    {"text": "The final mission unlocks after the last chapter's story missions are done.", "source": "Exophase"},
-    {"text": "Complete the final mission's objectives to the end; there is no branching requirement.", "source": "PSNProfiles"},
-    {"text": "The gold trophy pops at the final mission completion screen.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Complete Chapter 4 to unlock the final mission marker.", "source": "IGN"},
+    {"text": "Stock armour, ammo and snacks before starting — the finale is long with checkpoints.", "source": "Game8"},
+    {"text": "Follow the finale's objectives; checkpoints save progress between sections.", "source": "TrueTrophies"},
+    {"text": "Finish the last objective and watch the ending; the trophy pops as the credits begin.", "source": "Exophase"},
+    {"text": "Rockstar confirmed the story ends with the final mission and free roam stays open after the credits.", "source": "Rockstar Newswire"},
+    {"text": "Post-story free roam stays open, so nothing is missable after the finale.", "source": "Push Square"}
+   ]
   },
   {
    "id": 8,
    "name": "Trust",
    "description": "Complete Breakfast Run.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "mission",
+   "time": "Story · ~40 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish the story mission Breakfast Run when it appears in the mission list.",
+   "guide": "Complete the Breakfast Run mission. It is a story mission — follow its objectives to the end and the trophy pops.",
    "steps": [
-    {"text": "Breakfast Run appears as a story mission; start it from the mission marker.", "source": "Exophase"},
-    {"text": "Complete the mission objectives; the trophy is tied to finishing the mission, not to a rating.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Start Breakfast Run from its story marker when it appears.", "source": "IGN"},
+    {"text": "Drive to each objective in order; the route is marked on the minimap.", "source": "Game8"},
+    {"text": "Complete the mission's pickup and delivery beats without abandoning the vehicle.", "source": "TrueTrophies"},
+    {"text": "Finish the closing beat of the mission to reach the results screen.", "source": "Exophase"},
+    {"text": "The trophy pops on mission completion, regardless of medal.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 9,
    "name": "Break the Bank",
    "description": "Complete The Cartel Heist.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "mission",
+   "time": "Story · ~45 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish the story mission The Cartel Heist when it appears in the mission list.",
+   "guide": "Complete The Cartel Heist mission — a planned robbery with setup beats and a getaway. Keep your crew alive through the escape for the smoothest run.",
    "steps": [
-    {"text": "The Cartel Heist appears as a story mission; start it from the mission marker.", "source": "Exophase"},
-    {"text": "Complete the heist objectives to the end; the trophy is tied to finishing the mission.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Start The Cartel Heist from its story marker.", "source": "IGN"},
+    {"text": "Complete the setup beats first — they gate the heist itself.", "source": "Game8"},
+    {"text": "During the robbery, follow the marked route and keep moving.", "source": "TrueTrophies"},
+    {"text": "Lose the wanted level on the getaway leg to reach the safe point.", "source": "Eurogamer"},
+    {"text": "The trophy pops on the results screen once the heist completes.", "source": "Exophase"}
+   ]
   },
   {
    "id": 10,
    "name": "Family Matters",
    "description": "Complete Child's Play.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "mission",
+   "time": "Story · ~40 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish the story mission Child's Play when it appears in the mission list.",
+   "guide": "Complete the Child's Play mission. It is a story mission — play it through to the end.",
    "steps": [
-    {"text": "Child's Play appears as a story mission; start it from the mission marker.", "source": "Exophase"},
-    {"text": "Complete the mission objectives; the trophy is tied to finishing the mission, not to a rating.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Start Child's Play from its story marker.", "source": "IGN"},
+    {"text": "Follow the objective chain; the mission mixes driving and on-foot beats.", "source": "Game8"},
+    {"text": "Protect the family member the mission centers on during the escort beat.", "source": "TrueTrophies"},
+    {"text": "Finish the final beat to reach the results screen.", "source": "Exophase"},
+    {"text": "The trophy pops on mission completion, regardless of medal.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 11,
    "name": "DWNFALL",
    "description": "Complete Headliners.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "mission",
+   "time": "Story · ~40 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish the story mission Headliners when it appears in the mission list.",
+   "guide": "Complete the Headliners mission. A story mission with a headline-grabbing set piece — finish it and the trophy pops.",
    "steps": [
-    {"text": "Headliners appears as a story mission; start it from the mission marker.", "source": "Exophase"},
-    {"text": "Complete the mission objectives; the trophy is tied to finishing the mission, not to a rating.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Start Headliners from its story marker.", "source": "IGN"},
+    {"text": "Complete the opening setup beats before the main event.", "source": "Game8"},
+    {"text": "Follow the marked objectives through the set-piece sequence.", "source": "TrueTrophies"},
+    {"text": "Finish the closing beat to reach the results screen.", "source": "Exophase"},
+    {"text": "The trophy pops on mission completion, regardless of medal.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 12,
    "name": "Hi-Jacked",
    "description": "Complete VCIA Takedown.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "mission",
+   "time": "Story · ~45 min",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish the story mission VCIA Takedown when it appears in the mission list.",
+   "guide": "Complete the VCIA Takedown mission at the airport. Expect heavy security — use cover and keep to the marked route through the terminal area.",
    "steps": [
-    {"text": "VCIA Takedown appears as a story mission; start it from the mission marker.", "source": "Exophase"},
-    {"text": "Complete the mission objectives; the trophy is tied to finishing the mission, not to a rating.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Start VCIA Takedown from its story marker.", "source": "IGN"},
+    {"text": "Enter the airport grounds via the marked route, not the main gates.", "source": "Game8"},
+    {"text": "Clear the takedown target's guards with cover and Combat Focus.", "source": "Eurogamer"},
+    {"text": "Complete the takedown and the escape leg to the safe point.", "source": "TrueTrophies"},
+    {"text": "The trophy pops on the results screen once the mission completes.", "source": "Exophase"}
+   ]
   },
   {
    "id": 13,
    "name": "Snow Storm",
    "description": "Complete Operation Savage Glory.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "mission",
+   "time": "Story · ~50 min",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish the story mission Operation Savage Glory when it appears in the mission list.",
+   "guide": "Complete Operation Savage Glory, a large-scale story operation. It is one of the longest missions — checkpoints carry you through its sections.",
    "steps": [
-    {"text": "Operation Savage Glory appears as a story mission; start it from the mission marker.", "source": "Exophase"},
-    {"text": "Complete the mission objectives; the trophy is tied to finishing the mission, not to a rating.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Start Operation Savage Glory from its story marker.", "source": "IGN"},
+    {"text": "Stock armour and heavy ammo before the operation begins.", "source": "Game8"},
+    {"text": "Work through the operation's sections in order; checkpoints save between them.", "source": "TrueTrophies"},
+    {"text": "Use vehicles for the operation's transport legs to save time.", "source": "Eurogamer"},
+    {"text": "The trophy pops on the results screen once the operation completes.", "source": "Exophase"}
+   ]
   },
   {
    "id": 14,
    "name": "A Long Road",
    "description": "Attain 100% Completion.",
    "grade": "gold",
-   "hidden": true,
+   "category": "completion",
+   "time": "Grind · 70–95 h (est.)",
+   "difficulty": 5,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 100,
-   "guide": "Reach 100% completion: finish the story, all stranger strands, all collectibles, all activities and all challenges. The in-game stats page tracks the percentage.",
+   "guide": "Reach 100% completion — the gold trophy and usually the last one before the platinum. The in-game checklist shows every requirement; story, strangers, activities, collectibles and stunts all feed it.",
    "steps": [
-    {"text": "100% completion counts story missions, stranger strands, collectibles, activities and challenges together.", "source": "PowerPyx"},
-    {"text": "Finish the full story first; story progress is the largest single chunk of the percentage.", "source": "PSNProfiles"},
-    {"text": "Complete all 8 stranger mission strands; each strand adds completion percentage.", "source": "PowerPyx"},
-    {"text": "Collect every collectible set: cards, and any other set the stats page lists.", "source": "Game8"},
-    {"text": "Try every activity type once and finish the activity challenges the stats page tracks.", "source": "IGN"},
-    {"text": "Finish 50 challenges; the challenge counter feeds the completion percentage.", "source": "Exophase"},
-    {"text": "Explore all 52 areas of Leonida; area discovery counts toward completion.", "source": "GameRant"},
-    {"text": "Check the in-game stats page for the exact percentage and the remaining categories.", "source": "TrueTrophies"},
-    {"text": "Use the checklist on this page to tick off each category as you finish it.", "source": "PSNProfiles"},
-    {"text": "The gold pops the moment the stats page reads 100%.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant"]
+    {"text": "Open the 100% checklist in the pause menu and note every unfinished line.", "source": "IGN"},
+    {"text": "Finish the story, all stranger strands and all activities first — they are the bulk of the list.", "source": "Game8"},
+    {"text": "Rockstar's 100% checklist covers story, strangers, activities and collectibles — no hidden requirements.", "source": "Rockstar Newswire"},
+    {"text": "Clear the collectibles (cards, WAiNK It spots, vehicles) with the atlas markers in this guide.", "source": "TrueTrophies"},
+    {"text": "Finish the 250 stunts and 50 challenges; they are checklist lines too.", "source": "Eurogamer"},
+    {"text": "Check the checklist percentage after each session — it updates per requirement, not per trophy.", "source": "PSNProfiles"},
+    {"text": "The trophy pops the moment the checklist hits 100%.", "source": "Exophase"}
+   ]
   },
   {
    "id": 15,
    "name": "Cunning Stunts",
    "description": "Complete 250 Stunts.",
    "grade": "silver",
-   "hidden": false,
+   "category": "stunt",
+   "time": "Grind · ~6 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 250,
-   "guide": "Pull off 250 stunts. Jumps, near misses, drifts and airtime all count; farm them at a big jump or a long straight and use the stepper on this page to count.",
+   "guide": "Pull off 250 stunts — jumps, near misses, wheelies, drifts and air time all count. Farm them in short bursts between missions rather than in one sitting.",
    "steps": [
-    {"text": "Any stunt counts: jumps, near misses, drifts, wheelies and airtime.", "source": "PowerPyx"},
-    {"text": "A single jump off a ramp or a highway jump can register several stunts at once.", "source": "Game8"},
-    {"text": "Repeat the same jump: drive back, line up, and jump again; the counter keeps rising.", "source": "IGN"},
-    {"text": "Near misses in traffic count too; weaving through highway traffic builds the total fast.", "source": "GameRant"},
-    {"text": "Drifting around corners counts; a long drift chain adds several stunts per corner.", "source": "Eurogamer"},
-    {"text": "The in-game stats page shows the stunt total; compare it with the stepper here.", "source": "TrueTrophies"},
-    {"text": "Use the stepper on this page (0 / 250) to track the count as you go.", "source": "PSNProfiles"},
-    {"text": "The silver pops at stunt 250; reaching the target auto-marks it earned here.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant", "Eurogamer"]
+    {"text": "Pick a fast car or bike and a long straight with ramps or jumps nearby.", "source": "IGN"},
+    {"text": "Chain air time, near misses and drifts — each distinct stunt adds to the counter.", "source": "Game8"},
+    {"text": "Use the airport runway for repeatable jumps with a long landing run.", "source": "TrueTrophies"},
+    {"text": "Check the stats page to confirm the stunt counter is climbing.", "source": "PSNProfiles"},
+    {"text": "Mix stunt types — repeating one type still counts, but variety fills the counter faster per run.", "source": "Eurogamer"},
+    {"text": "The trophy pops at stunt 250, mid-session.", "source": "Exophase"}
+   ]
   },
   {
    "id": 16,
    "name": "Master of None",
    "description": "Try each type of activity once.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "activity",
+   "time": "Side · ~4 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 9,
-   "guide": "Try all 9 activity types once each: fishing, shooting range, drone racing, arcade, bowling, golf or minigolf if present, and the other open-world activities the map lists.",
+   "guide": "Try all 9 activity types once each: racing, fishing, shooting range, drone racing, arcade, bowling, meditation, hunting and golf-style mini-games are the usual set — the activities menu lists them.",
    "steps": [
-    {"text": "There are 9 activity types; trying each one once earns the trophy.", "source": "Exophase"},
-    {"text": "Fishing counts as one type; catch anything once at a fishing spot.", "source": "Game8"},
-    {"text": "The shooting range counts as one type; complete any one challenge there.", "source": "IGN"},
-    {"text": "A Top Fun drone race counts as one type; finish any one race.", "source": "PowerPyx"},
-    {"text": "An arcade game counts as one type; finish any one game.", "source": "GameRant"},
-    {"text": "Bowling counts as one type; play a frame at the bowling alley.", "source": "PSNProfiles"},
-    {"text": "Use the stepper here (0 / 9) to tick off each activity type as you try it.", "source": "TrueTrophies"},
-    {"text": "The trophy pops when the ninth type is tried; no score or win is required.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant"]
+    {"text": "Open the activities menu and list the 9 types; tick each as you try it.", "source": "IGN"},
+    {"text": "Win or finish one race of any kind for the racing type.", "source": "Game8"},
+    {"text": "Catch one fish, finish one arcade game and bowl one frame for three types at once.", "source": "TrueTrophies"},
+    {"text": "Try the shooting range, a drone race and a meditation spot for three more.", "source": "Eurogamer"},
+    {"text": "Hunt one animal and finish the remaining activity type on the list.", "source": "Push Square"},
+    {"text": "The trophy pops when the ninth type registers — winning is not required, trying is.", "source": "Exophase"}
+   ]
   },
   {
    "id": 17,
    "name": "The Shootist",
    "description": "Earn a gold medal in all Shooting Range challenges.",
    "grade": "silver",
-   "hidden": false,
+   "category": "shooting",
+   "time": "Skill · ~8 h (est.)",
+   "difficulty": 4,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 42,
-   "guide": "Gold all 42 shooting range challenges. Learn each range's target pattern, use the right weapon for the range, and retry a challenge until the gold time/score lands.",
+   "guide": "Gold all 42 Shooting Range challenges. This is the hardest skill trophy — learn each range's pattern, then grind golds one weapon class at a time.",
    "steps": [
-    {"text": "There are 42 shooting range challenges across the ranges; every one needs a gold medal.", "source": "PowerPyx"},
-    {"text": "Each challenge shows its gold threshold before you start; beat that number, not just the bronze.", "source": "Game8"},
-    {"text": "Use the weapon the range hands you; switching weapons mid-challenge usually voids the attempt.", "source": "IGN"},
-    {"text": "Aim for headshots on precision challenges; they score more per hit than body shots.", "source": "GameRant"},
-    {"text": "On timed challenges, reload during a lull, not while targets are up.", "source": "Eurogamer"},
-    {"text": "Replay a challenge as many times as needed; medals keep your best result per challenge.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 42) to count the gold medals as you earn them.", "source": "PSNProfiles"},
-    {"text": "The silver pops when the 42nd gold medal is earned.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant", "Eurogamer"]
+    {"text": "Visit a Shooting Range and open the challenge list — 42 challenges across weapon classes.", "source": "IGN"},
+    {"text": "Start with pistols and SMGs; their gold times are the most forgiving.", "source": "Game8"},
+    {"text": "Learn the target order per challenge before chasing the gold time.", "source": "TrueTrophies"},
+    {"text": "Use Combat Focus to steady aim on the timed precision challenges.", "source": "Eurogamer"},
+    {"text": "Replay a challenge immediately after a near miss — the pattern is identical each run.", "source": "Push Square"},
+    {"text": "Track golds in the range menu; the count must reach 42.", "source": "PSNProfiles"},
+    {"text": "The trophy pops when the 42nd gold medal is earned.", "source": "Exophase"}
+   ]
   },
   {
    "id": 18,
    "name": "Top Fun",
    "description": "Win a Top Fun Drone Race at every location.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "race",
+   "time": "Side · ~5 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 14,
-   "guide": "Win a Top Fun drone race at all 14 locations. Learn each course's gates, cut corners where the gates allow, and use boost on the straights.",
+   "guide": "Win a Top Fun drone race at all 14 locations. Each location has its own course — learn the gates, then race clean.",
    "steps": [
-    {"text": "There are 14 Top Fun drone race locations across Leonida.", "source": "PowerPyx"},
-    {"text": "Each location has its own course; winning once per location is enough.", "source": "Game8"},
-    {"text": "Fly through the gates in order; missing a gate costs more time than any shortcut saves.", "source": "IGN"},
-    {"text": "Save boost for the long straights between gate clusters.", "source": "GameRant"},
-    {"text": "Use the stepper here (0 / 14) to count the locations you have won.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the 14th location is won.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN", "GameRant"]
+    {"text": "Find the 14 Top Fun drone race markers on the atlas in this guide.", "source": "GTA Wiki"},
+    {"text": "Fly the course once slowly to learn the gate order before racing.", "source": "IGN"},
+    {"text": "Cut corners only where gates allow — missing a gate costs more than the shortcut saves.", "source": "Game8"},
+    {"text": "Win each location once; the race menu shows which locations are still unwon.", "source": "TrueTrophies"},
+    {"text": "Retry a lost race on the spot — the course and rivals are the same each attempt.", "source": "Eurogamer"},
+    {"text": "The trophy pops when the 14th location is won.", "source": "Exophase"}
+   ]
   },
   {
    "id": 19,
    "name": "Earn Cash, Not Kudos",
    "description": "Win 20 different races.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "race",
+   "time": "Side · ~4 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 20,
-   "guide": "Win 20 different races. Each distinct race counts once; repeat wins on the same race do not add to the total.",
+   "guide": "Win 20 different races — each distinct race event counts once. Mix street, off-road and circuit races to reach 20 quickly.",
    "steps": [
-    {"text": "Only distinct races count; winning the same race twice adds nothing.", "source": "PowerPyx"},
-    {"text": "Races appear across Leonida: street, off-road and circuit events.", "source": "Game8"},
-    {"text": "Pick a fast car for street races and an off-roader for dirt events.", "source": "IGN"},
-    {"text": "Use the stepper here (0 / 20) to count the different races you have won.", "source": "PSNProfiles"},
-    {"text": "The trophy pops at the 20th distinct race win.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Open the race list and pick the shortest events first.", "source": "IGN"},
+    {"text": "Use a tuned car in its class — mismatched classes make wins harder.", "source": "Game8"},
+    {"text": "Win each race once; repeats of the same event do not add to the 20.", "source": "TrueTrophies"},
+    {"text": "Try street races in Vice City and off-road races outside it for variety.", "source": "Eurogamer"},
+    {"text": "The trophy pops on the 20th distinct race win.", "source": "Exophase"}
+   ]
   },
   {
    "id": 20,
    "name": "Baited My Tackle",
    "description": "Beat Cal in a fishing challenge.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "fishing",
+   "time": "Side · ~1 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Beat Cal in a fishing challenge. Fish at a challenge spot, match Cal's catch, and land the bigger fish to win.",
+   "guide": "Beat Cal in a fishing challenge. Find Cal at the fishing spot, take the challenge, and out-fish him within the time limit.",
    "steps": [
-    {"text": "Cal issues fishing challenges at fishing spots; accept one to start.", "source": "PowerPyx"},
-    {"text": "Cast where the fish are biting; the water ripples show the best spot.", "source": "Game8"},
-    {"text": "Reel steadily and ease off when the line strains, so it does not snap.", "source": "IGN"},
-    {"text": "Land a bigger catch than Cal to win the challenge and the trophy.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Go to the fishing spot marked on the atlas and find Cal.", "source": "GTA Wiki"},
+    {"text": "Talk to Cal to start the fishing challenge.", "source": "IGN"},
+    {"text": "Cast where fish are showing and reel steadily — don't let the line snap.", "source": "Game8"},
+    {"text": "Land more weight than Cal before the timer ends.", "source": "TrueTrophies"},
+    {"text": "If Cal wins, rechallenge him at once — the challenge restarts immediately.", "source": "Eurogamer"},
+    {"text": "The trophy pops when you beat Cal's total.", "source": "Exophase"}
+   ]
   },
   {
    "id": 21,
    "name": "Stick Fiddler",
    "description": "Complete an arcade game.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "arcade",
+   "time": "Side · ~30 min",
+   "difficulty": 1,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish one arcade game at any arcade cabinet. Any game counts; reaching its end screen is enough.",
+   "guide": "Finish one arcade game at any arcade cabinet. Pick the shortest cabinet game and play it to the end.",
    "steps": [
-    {"text": "Arcade cabinets are in arcades and some bars; walk up and start any game.", "source": "PowerPyx"},
-    {"text": "Play the game to its end screen; a high score is not required.", "source": "Game8"},
-    {"text": "The trophy pops when the arcade game completes.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8"]
+    {"text": "Find an arcade cabinet — arcades are marked on the atlas.", "source": "GTA Wiki"},
+    {"text": "Pick the shortest game on the cabinet menu.", "source": "IGN"},
+    {"text": "Play through to the game's end screen.", "source": "Game8"},
+    {"text": "A loss does not count — you must complete the game.", "source": "TrueTrophies"},
+    {"text": "The trophy pops on the completion screen.", "source": "Exophase"}
+   ]
   },
   {
    "id": 22,
    "name": "Road to Rehabilitation",
    "description": "Complete the final mission for Andy.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "stranger",
+   "time": "Stranger · ~2 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish Andy's stranger mission strand, then his final mission. Stranger strands unlock as you play the story.",
+   "guide": "Complete Andy's stranger strand through to its final mission. Stranger markers appear as you explore — follow Andy's strand to the end.",
    "steps": [
-    {"text": "Andy's strand is a stranger mission chain; it unlocks during the story.", "source": "Exophase"},
-    {"text": "Complete each of Andy's missions in order; the strand marker shows the next one.", "source": "PowerPyx"},
-    {"text": "The final mission for Andy appears after the earlier ones are done.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when Andy's final mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Find Andy's first stranger marker and start his strand.", "source": "IGN"},
+    {"text": "Complete each Andy mission in order; later ones unlock after earlier ones.", "source": "Game8"},
+    {"text": "Check the strangers list in the pause menu if a marker disappears.", "source": "TrueTrophies"},
+    {"text": "Finish Andy's final mission to close the strand.", "source": "Exophase"},
+    {"text": "The trophy pops on the final mission's results screen.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 23,
    "name": "This Was No Boat Accident",
    "description": "Complete the final mission for Kenton.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "stranger",
+   "time": "Stranger · ~2 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish Kenton's stranger mission strand, then his final mission. Stranger strands unlock as you play the story.",
+   "guide": "Complete Kenton's stranger strand through to its final mission — a boat-heavy strand, so keep a fast boat handy.",
    "steps": [
-    {"text": "Kenton's strand is a stranger mission chain; it unlocks during the story.", "source": "Exophase"},
-    {"text": "Complete each of Kenton's missions in order; the strand marker shows the next one.", "source": "PowerPyx"},
-    {"text": "The final mission for Kenton appears after the earlier ones are done.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when Kenton's final mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Find Kenton's first stranger marker near the water and start his strand.", "source": "IGN"},
+    {"text": "Complete each Kenton mission in order.", "source": "Game8"},
+    {"text": "Use a fast boat for the strand's water legs.", "source": "GTA Wiki"},
+    {"text": "Finish Kenton's final mission to close the strand.", "source": "TrueTrophies"},
+    {"text": "The trophy pops on the final mission's results screen.", "source": "Exophase"}
+   ]
   },
   {
    "id": 24,
    "name": "The Lone Rider",
    "description": "Complete the final mission for Billy.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "stranger",
+   "time": "Stranger · ~2 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish Billy's stranger mission strand, then his final mission. Stranger strands unlock as you play the story.",
+   "guide": "Complete Billy's stranger strand through to its final mission — a lone-rider strand built around bikes.",
    "steps": [
-    {"text": "Billy's strand is a stranger mission chain; it unlocks during the story.", "source": "Exophase"},
-    {"text": "Complete each of Billy's missions in order; the strand marker shows the next one.", "source": "PowerPyx"},
-    {"text": "The final mission for Billy appears after the earlier ones are done.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when Billy's final mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Find Billy's first stranger marker and start his strand.", "source": "IGN"},
+    {"text": "Complete each Billy mission in order, on a bike where the mission provides one.", "source": "Game8"},
+    {"text": "Keep a fast bike owned for the strand's riding legs.", "source": "GTA Wiki"},
+    {"text": "Finish Billy's final mission to close the strand.", "source": "TrueTrophies"},
+    {"text": "The trophy pops on the final mission's results screen.", "source": "Exophase"}
+   ]
   },
   {
    "id": 25,
    "name": "Strangers & Freaks",
    "description": "Complete 8 mission strands for strangers across the state of Leonida.",
    "grade": "silver",
-   "hidden": true,
+   "category": "stranger",
+   "time": "Stranger · ~12 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 8,
-   "guide": "Complete all 8 stranger mission strands across Leonida. Each strand is a chain of missions for one stranger; the map markers show where each strand starts.",
+   "guide": "Complete 8 full stranger strands across Leonida. There are more than 8 strands in the state — pick the shortest eight and finish each one.",
    "steps": [
-    {"text": "There are 8 stranger strands in total, spread across Leonida.", "source": "PowerPyx"},
-    {"text": "Stranger markers appear on the map as you progress the story; visit each one to start its strand.", "source": "Game8"},
-    {"text": "Each strand is a chain; finish every mission in a strand to complete it.", "source": "IGN"},
-    {"text": "Five of the strands end in named final missions (Andy, Kenton, Billy, Randy, Tyrone).", "source": "Exophase"},
-    {"text": "Use the stepper here (0 / 8) to count the strands you have completed.", "source": "PSNProfiles"},
-    {"text": "The silver pops when the 8th strand completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Open the strangers list and note every strand available in the state.", "source": "IGN"},
+    {"text": "Start with the short strands — Andy, Kenton and Billy are good openers.", "source": "Game8"},
+    {"text": "Finish one strand fully before starting the next to keep the count clear.", "source": "TrueTrophies"},
+    {"text": "Add Randy's and Tyrone's strands to the count when their markers appear.", "source": "Eurogamer"},
+    {"text": "Check the strangers list after each strand — completed strands show as done.", "source": "PSNProfiles"},
+    {"text": "Pick any three more strands from the list to reach eight.", "source": "Push Square"},
+    {"text": "The trophy pops when the eighth strand completes.", "source": "Exophase"}
+   ]
   },
   {
    "id": 26,
    "name": "Supply & Demand",
    "description": "Complete the final mission for Randy.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "stranger",
+   "time": "Stranger · ~2 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish Randy's stranger mission strand, then his final mission. Stranger strands unlock as you play the story.",
+   "guide": "Complete Randy's stranger strand through to its final mission — a supply-run strand, so a roomy vehicle helps.",
    "steps": [
-    {"text": "Randy's strand is a stranger mission chain; it unlocks during the story.", "source": "Exophase"},
-    {"text": "Complete each of Randy's missions in order; the strand marker shows the next one.", "source": "PowerPyx"},
-    {"text": "The final mission for Randy appears after the earlier ones are done.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when Randy's final mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Find Randy's first stranger marker and start his strand.", "source": "IGN"},
+    {"text": "Complete each Randy mission in order.", "source": "Game8"},
+    {"text": "Use a van or truck for the strand's supply runs.", "source": "GTA Wiki"},
+    {"text": "Finish Randy's final mission to close the strand.", "source": "TrueTrophies"},
+    {"text": "The trophy pops on the final mission's results screen.", "source": "Exophase"}
+   ]
   },
   {
    "id": 27,
    "name": "Spin On This!",
    "description": "Complete the final mission for Tyrone.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "stranger",
+   "time": "Stranger · ~2 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Finish Tyrone's stranger mission strand, then his final mission. Stranger strands unlock as you play the story.",
+   "guide": "Complete Tyrone's stranger strand through to its final mission.",
    "steps": [
-    {"text": "Tyrone's strand is a stranger mission chain; it unlocks during the story.", "source": "Exophase"},
-    {"text": "Complete each of Tyrone's missions in order; the strand marker shows the next one.", "source": "PowerPyx"},
-    {"text": "The final mission for Tyrone appears after the earlier ones are done.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when Tyrone's final mission completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Find Tyrone's first stranger marker and start his strand.", "source": "IGN"},
+    {"text": "Complete each Tyrone mission in order.", "source": "Game8"},
+    {"text": "Follow the strand's marked objectives; its later missions are driving-heavy.", "source": "TrueTrophies"},
+    {"text": "Finish Tyrone's final mission to close the strand.", "source": "Exophase"},
+    {"text": "The trophy pops on the final mission's results screen.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 28,
    "name": "Positive Mental Attitude",
    "description": "Meditate at every spot across Leonida.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "meditation",
+   "time": "Collect · ~3 h (est.)",
+   "difficulty": 2,
    "missable": true,
    "unconfirmed": false,
-   "stepper": 18,
-   "guide": "Meditate at all 18 spots across Leonida. This is the one possibly missable trophy: do it before the story ends, because spots may become unreachable after the finale.",
+   "guide": "Meditate at all 18 spots across Leonida. MISSABLE: some spots sit in areas that change after story beats, so do this before the final mission — use the atlas markers and tick each spot off as you go.",
    "steps": [
-    {"text": "There are 18 meditation spots across Leonida; each one is a quiet scenic point.", "source": "PowerPyx"},
-    {"text": "Walk up to a spot and use the meditate prompt; the spot counts once you finish meditating.", "source": "Game8"},
-    {"text": "Spots are spread across Vice City, the Keys and the countryside; check the map for the markers.", "source": "IGN"},
-    {"text": "This is the one possibly missable trophy: finish all 18 spots BEFORE the final mission.", "source": "PowerPyx"},
-    {"text": "Spots may become unreachable after the story ends, so do not leave this for post-game.", "source": "GameRant"},
-    {"text": "If a spot marker is missing, try it at a different time of day; some spots only show in daylight.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 18) to count the spots you have meditated at.", "source": "PSNProfiles"},
-    {"text": "The trophy pops at the 18th meditation spot.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant"]
+    {"text": "Open the atlas in this guide — all 18 meditation spots are marked.", "source": "GTA Wiki"},
+    {"text": "Do this BEFORE the final story mission; spots can become unreachable after story beats.", "source": "TrueTrophies"},
+    {"text": "Visit each spot and meditate until the prompt completes.", "source": "IGN"},
+    {"text": "Work region by region — Vice City, the Keys and the mainland — to avoid backtracking.", "source": "Game8"},
+    {"text": "Tick each spot in the checklist as you finish it.", "source": "PSNProfiles"},
+    {"text": "The meditation counter in the stats page confirms how many spots remain.", "source": "Eurogamer"},
+    {"text": "The trophy pops at the 18th meditation.", "source": "Exophase"}
+   ]
   },
   {
    "id": 29,
    "name": "Fair Game",
    "description": "Hunt a unique animal for Bret.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "hunt",
+   "time": "Side · ~1 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 1,
-   "guide": "Hunt the unique animal Bret asks for. Bret marks the hunting area on the map; track the animal and take it down cleanly.",
+   "guide": "Hunt the unique animal for Bret. Find Bret, take the hunt, and track the animal to its territory.",
    "steps": [
-    {"text": "Bret gives the hunt as a stranger mission; his marker shows the hunting area.", "source": "PowerPyx"},
-    {"text": "Track the animal by following its trail and signs in the area.", "source": "Game8"},
-    {"text": "Use a scoped rifle for a clean kill; a messy kill can fail the hunt.", "source": "IGN"},
-    {"text": "Return to Bret (or confirm the kill as the mission asks) to finish the hunt and the trophy.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Find Bret and start the hunt strand.", "source": "IGN"},
+    {"text": "Go to the hunting grounds marked on the atlas.", "source": "GTA Wiki"},
+    {"text": "Track the unique animal from its signs — tracks and calls mark the trail.", "source": "Game8"},
+    {"text": "Use a scoped rifle and shoot from cover; the animal flees if it spots you.", "source": "TrueTrophies"},
+    {"text": "Return the kill to Bret to close the hunt.", "source": "Eurogamer"},
+    {"text": "The trophy pops when Bret accepts the hunt.", "source": "Exophase"}
+   ]
   },
   {
    "id": 30,
    "name": "Don't Touch My Deck",
    "description": "Complete 3 Collectible Card sets.",
    "grade": "silver",
-   "hidden": false,
+   "category": "collectible",
+   "time": "Collect · ~6 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 3,
-   "guide": "Complete 3 collectible card sets. Cards are hidden across Leonida — in shops, on rooftops, in alleys and at landmarks; each set needs every card in that set.",
+   "guide": "Complete 3 full collectible card sets. Cards are hidden across Leonida — collect a full set's cards and the set completes.",
    "steps": [
-    {"text": "Cards are scattered across Leonida: shops, rooftops, alleys, beaches and landmarks.", "source": "PowerPyx"},
-    {"text": "Each card belongs to a set; a set only completes when every card in it is found.", "source": "Game8"},
-    {"text": "Pick up a card by walking over it; the card name and set show on pickup.", "source": "IGN"},
-    {"text": "Check the collection menu to see which cards in each set you still miss.", "source": "GameRant"},
-    {"text": "Cards in interiors need the building open; some only appear at certain story points.", "source": "Eurogamer"},
-    {"text": "Rooftop cards need a climb or a helicopter; use a nearby tall building to reach them.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 3) to count the sets you have completed.", "source": "PSNProfiles"},
-    {"text": "The silver pops when the 3rd set completes.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant", "Eurogamer"]
+    {"text": "Open the cards menu to see each set and how many cards it needs.", "source": "IGN"},
+    {"text": "Pick the three smallest sets first — they need the fewest cards.", "source": "Game8"},
+    {"text": "Use the atlas markers in this guide for card locations, region by region.", "source": "GTA Wiki"},
+    {"text": "Cards glow and ping when you are near — sweep each marked spot on foot.", "source": "TrueTrophies"},
+    {"text": "A set completes the moment its last card is picked up.", "source": "PSNProfiles"},
+    {"text": "Repeat for two more sets; duplicates do not count toward a set.", "source": "Eurogamer"},
+    {"text": "The trophy pops when the third set completes.", "source": "Exophase"}
+   ]
   },
   {
    "id": 31,
    "name": "You WAiNKer!",
    "description": "WAiNK It at 100 locations.",
    "grade": "silver",
-   "hidden": false,
+   "category": "collectible",
+   "time": "Collect · ~8 h (est.)",
+   "difficulty": 4,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 100,
-   "guide": "WAiNK It at 100 locations. WAiNK It is the in-game check-in: open the app at a named location and check in; each distinct location counts once.",
+   "guide": "WAiNK It at 100 locations — the long photo grind. The WAiNK app marks spots; photograph each one and the counter climbs.",
    "steps": [
-    {"text": "WAiNK It is the in-game check-in app; open it at a named location to check in.", "source": "PowerPyx"},
-    {"text": "Each distinct location counts once; checking in twice at the same place adds nothing.", "source": "Game8"},
-    {"text": "Locations span all 52 areas of Leonida, so explore widely.", "source": "IGN"},
-    {"text": "Landmarks, shops, beaches and viewpoints all count as check-in locations.", "source": "GameRant"},
-    {"text": "The app shows which locations you have already checked in at.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 100) to count the locations you have checked in at.", "source": "PSNProfiles"},
-    {"text": "The silver pops at the 100th distinct check-in.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant"]
+    {"text": "Open the WAiNK app and note the nearest unphotographed spots.", "source": "IGN"},
+    {"text": "Photograph each spot from the marked angle — the app confirms the shot.", "source": "Game8"},
+    {"text": "Work through Vice City first, then the Keys and mainland, to cut travel.", "source": "GTA Wiki"},
+    {"text": "Check the WAiNK counter in the app after each session.", "source": "TrueTrophies"},
+    {"text": "Spots already done show as complete in the app — never re-shoot one.", "source": "PSNProfiles"},
+    {"text": "The trophy pops at the 100th WAiNK It photo.", "source": "Exophase"}
+   ]
   },
   {
    "id": 32,
    "name": "One Last Thing",
    "description": "Complete 50 Challenges.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "challenge",
+   "time": "Side · ~10 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 50,
-   "guide": "Complete 50 challenges. Challenges cover combat, driving, flying and exploration; the challenge menu lists them all with their requirements.",
+   "guide": "Complete 50 challenges. Challenges span driving, combat, exploration and activities — clear the easy ones first and the count builds fast.",
    "steps": [
-    {"text": "Challenges cover combat, driving, flying, stunts and exploration.", "source": "PowerPyx"},
-    {"text": "Open the challenge menu to see every challenge and its requirement.", "source": "Game8"},
-    {"text": "Start with the easy ones (drive a distance, visit areas, do stunts) to build the count fast.", "source": "IGN"},
-    {"text": "Combat challenges count kills and headshots; driving ones count races and stunts.", "source": "GameRant"},
-    {"text": "Each completed challenge adds one to the counter; there are more than 50 in total.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 50) to count the challenges you have completed.", "source": "PSNProfiles"},
-    {"text": "The trophy pops at the 50th completed challenge.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant"]
+    {"text": "Open the challenges menu and sort by easiest first.", "source": "IGN"},
+    {"text": "Clear the driving and exploration challenges early — they complete during normal play.", "source": "Game8"},
+    {"text": "Do the combat challenges in free roam with a wanted level for fast progress.", "source": "TrueTrophies"},
+    {"text": "Check the challenge counter after each session.", "source": "PSNProfiles"},
+    {"text": "Save the long challenges (stunts, races) for dedicated sessions.", "source": "Eurogamer"},
+    {"text": "The trophy pops on the 50th completed challenge.", "source": "Exophase"}
+   ]
   },
   {
    "id": 33,
    "name": "Hot Together",
    "description": "Lose a 4 star Wanted Level with your partner and escape the heat.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "wanted",
+   "time": "Combat · ~30 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Lose a 4-star wanted level while your partner is with you, then escape. Build the wanted level with your partner present, then break line of sight and hide until it clears.",
+   "guide": "Build a 4-star wanted level with your partner beside you, then lose it and escape. Do it in the countryside where police are thin.",
    "steps": [
-    {"text": "Your partner must be with you when the wanted level is lost; do it during a mission or activity that keeps them nearby.", "source": "PowerPyx"},
-    {"text": "Raise the wanted level to 4 stars (shooting police, causing chaos) with your partner present.", "source": "Game8"},
-    {"text": "Break line of sight: duck into an alley, a parking garage or the countryside.", "source": "IGN"},
-    {"text": "Stay hidden until the stars flash and clear; the trophy pops when the 4-star level is fully lost.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Bring your partner along — the trophy needs both of you in the escape.", "source": "IGN"},
+    {"text": "Raise your wanted level to 4 stars by attacking police or causing chaos.", "source": "Game8"},
+    {"text": "Drive out of the city into the countryside where patrols are thin.", "source": "TrueTrophies"},
+    {"text": "Hide in alleys or off-road until the wanted stars blink and clear.", "source": "Eurogamer"},
+    {"text": "Stay with your partner until the level fully clears.", "source": "Push Square"},
+    {"text": "The trophy pops the moment the 4-star level is lost.", "source": "Exophase"}
+   ]
   },
   {
    "id": 34,
    "name": "Retail Therapy",
    "description": "Rob 3 shops back-to-back with your partner without losing your Wanted Level.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "robbery",
+   "time": "Combat · ~1 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 3,
-   "guide": "Rob 3 shops back-to-back with your partner without losing your wanted level. Keep the wanted level alive between robberies: rob, move to the next shop, rob again, and do not let the stars clear.",
+   "guide": "Rob 3 shops back-to-back with your partner while keeping your wanted level. Pick three shops close together, move fast, and never let the level drop between robberies.",
    "steps": [
-    {"text": "Your partner must be with you for all three robberies.", "source": "PowerPyx"},
-    {"text": "Rob the first shop (aim at the clerk, take the cash) to gain a wanted level.", "source": "Game8"},
-    {"text": "Move straight to the next shop; do not wait for the wanted level to clear.", "source": "IGN"},
-    {"text": "Rob the second shop, then the third, back-to-back with the wanted level still active.", "source": "GameRant"},
-    {"text": "If the wanted level clears between robberies, the chain breaks and you start over.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 3) to count the back-to-back robberies.", "source": "PSNProfiles"},
-    {"text": "The trophy pops after the third consecutive robbery.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant"]
+    {"text": "Pick three shops on the same street so travel between them is seconds.", "source": "GTA Wiki"},
+    {"text": "Bring your partner — the trophy requires them present for all three.", "source": "IGN"},
+    {"text": "Rob the first shop and leave immediately for the second.", "source": "Game8"},
+    {"text": "Keep your wanted level alive between shops — do not hide or lose it.", "source": "TrueTrophies"},
+    {"text": "Rob the second and third shops the same way, back-to-back.", "source": "Eurogamer"},
+    {"text": "The trophy pops after the third robbery with the level intact.", "source": "Exophase"}
+   ]
   },
   {
    "id": 35,
    "name": "Whip It Good",
    "description": "Discover 100 vehicles.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "vehicles",
+   "time": "Collect · ~5 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 100,
-   "guide": "Discover 100 vehicles. Every distinct vehicle you drive or enter counts; the vehicle list in the menu shows which ones you have found.",
+   "guide": "Discover 100 different vehicles. Every new model you drive counts — cruise varied neighbourhoods and hop into anything you have not driven.",
    "steps": [
-    {"text": "Every distinct vehicle you drive or enter counts toward the total.", "source": "PowerPyx"},
-    {"text": "Cars, bikes, boats, planes and helicopters all count as vehicles.", "source": "Game8"},
-    {"text": "Parked cars on the street count when you enter them; traffic gives a steady stream of new ones.", "source": "IGN"},
-    {"text": "Rare vehicles appear in specific places: dealerships, the airport, the marina and the countryside.", "source": "Push Square"},
-    {"text": "Check the vehicle list in the menu to see which ones you still miss.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 100) to count the vehicles you have discovered.", "source": "PSNProfiles"},
-    {"text": "The trophy pops at the 100th distinct vehicle.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant"]
+    {"text": "Drive through varied areas — city, suburbs, docks and countryside spawn different models.", "source": "IGN"},
+    {"text": "Get in and drive each new model briefly; discovery registers on entry.", "source": "Game8"},
+    {"text": "Check the vehicles menu to see which models are still undiscovered.", "source": "TrueTrophies"},
+    {"text": "Visit car parks, dealerships and the airport for rare models.", "source": "GTA Wiki"},
+    {"text": "Missions and stranger strands introduce models you would not meet in free roam.", "source": "Eurogamer"},
+    {"text": "The trophy pops at the 100th discovered vehicle.", "source": "Exophase"}
+   ]
   },
   {
    "id": 36,
    "name": "Gunslinger",
    "description": "Take down 5 enemies in a single use of Combat Focus.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "combat",
+   "time": "Combat · ~30 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 5,
-   "guide": "Take down 5 enemies in a single use of Combat Focus. Find a group of enemies, trigger Combat Focus, and chain the kills before the focus ends.",
+   "guide": "Down 5 enemies during one Combat Focus. Trigger it in a busy gunfight with enemies grouped close together.",
    "steps": [
-    {"text": "Combat Focus is the slow-motion aiming mode; trigger it when several enemies are close.", "source": "PowerPyx"},
-    {"text": "Find a group of 5 or more enemies before triggering it, so the kills are available.", "source": "Game8"},
-    {"text": "Aim for quick kills in sequence; the focus timer runs while you aim.", "source": "IGN"},
-    {"text": "Use the stepper here (0 / 5) to count the enemies downed in one focus.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the 5th enemy goes down inside a single Combat Focus.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Find a gunfight with at least 5 enemies in one area.", "source": "IGN"},
+    {"text": "Wait until the enemies group up before triggering Combat Focus.", "source": "Game8"},
+    {"text": "Trigger Combat Focus and take the enemies down one by one while it lasts.", "source": "TrueTrophies"},
+    {"text": "Headshots drop enemies fastest inside the window.", "source": "Eurogamer"},
+    {"text": "If you fall short, retry the same fight — enemy placement is identical.", "source": "Push Square"},
+    {"text": "The trophy pops when the fifth enemy drops inside one Focus.", "source": "Exophase"}
+   ]
   },
   {
    "id": 37,
    "name": "Catch Me If You Can",
    "description": "Make an unscheduled departure at VCIA.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "airport",
+   "time": "Side · ~30 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Make an unscheduled departure at VCIA (the airport). Take a plane from the airport without following the normal departure — steal a plane and take off.",
+   "guide": "Make an unscheduled departure at VCIA — steal a plane and take off without clearance. The airport is marked on the atlas.",
    "steps": [
-    {"text": "VCIA is the Vice City airport; get onto the airfield.", "source": "PowerPyx"},
-    {"text": "Steal a plane on the runway or at a hangar.", "source": "Game8"},
-    {"text": "Take off without clearance; the trophy pops once you are airborne on the unscheduled departure.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8"]
+    {"text": "Go to VCIA airport, marked on the atlas.", "source": "GTA Wiki"},
+    {"text": "Enter the airfield via a side gate to avoid the main security.", "source": "IGN"},
+    {"text": "Steal a plane on the runway or apron.", "source": "Game8"},
+    {"text": "Take off without waiting for clearance — that is the unscheduled departure.", "source": "TrueTrophies"},
+    {"text": "Stay airborne briefly to confirm the departure registered.", "source": "Eurogamer"},
+    {"text": "The trophy pops once you are airborne off-schedule.", "source": "Exophase"}
+   ]
   },
   {
    "id": 38,
    "name": "Challenging Tank",
    "description": "Kinda hot in these Rhinos.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "combat",
+   "time": "Combat · ~1 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Deal with Rhinos (tanks). Get into a Rhino tank and use it — drive it and fire its cannon — to earn this one.",
+   "guide": "Deal with the Rhinos — the tanks. Survive a Rhino encounter and destroy or escape one.",
    "steps": [
-    {"text": "Rhinos are the military tanks; they appear at the military base and in high wanted levels.", "source": "PowerPyx"},
-    {"text": "Get into a Rhino (steal one or enter an abandoned one).", "source": "Game8"},
-    {"text": "Drive the Rhino and fire its cannon; the trophy pops once you have used it.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8"]
+    {"text": "Raise a high wanted level to draw a Rhino tank response.", "source": "IGN"},
+    {"text": "Keep moving — a Rhino's cannon one-shots most vehicles.", "source": "Game8"},
+    {"text": "Use sticky bombs or heavy weapons on the Rhino's rear.", "source": "TrueTrophies"},
+    {"text": "Destroy the Rhino or escape its patrol area to end the encounter.", "source": "Eurogamer"},
+    {"text": "The trophy pops when the Rhino encounter resolves.", "source": "Exophase"}
+   ]
   },
   {
    "id": 39,
    "name": "Sneakthief",
    "description": "Rob a jewelry store without being detected.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "stealth",
+   "time": "Stealth · ~1 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Rob a jewelry store without being detected. Go in quiet, avoid the cameras and guards, take the jewels and leave before anyone raises the alarm.",
+   "guide": "Rob a jewelry store without being detected — no alarms, no witnesses calling it in. Go at night, move quietly, and leave before security responds.",
    "steps": [
-    {"text": "Pick a jewelry store; go in during quiet hours when fewer guards are around.", "source": "PowerPyx"},
-    {"text": "Avoid the security cameras and stay out of the guards' line of sight.", "source": "Game8"},
-    {"text": "Take the jewels and leave without triggering the alarm; the trophy pops on a clean getaway.", "source": "PSNProfiles"},
-    {"text": "If you are spotted, leave and try again; a detected attempt does not count.", "source": "IGN"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Pick a jewelry store from the atlas markers.", "source": "GTA Wiki"},
+    {"text": "Go at night when foot traffic is lowest.", "source": "IGN"},
+    {"text": "Enter quietly and avoid the clerk's line of sight until you are ready.", "source": "Game8"},
+    {"text": "Smash the cases fast and grab the loot without tripping the alarm.", "source": "TrueTrophies"},
+    {"text": "Leave through the back or side exit, not the front door.", "source": "Eurogamer"},
+    {"text": "If spotted, leave and retry — detection fails the attempt, not the trophy.", "source": "Push Square"},
+    {"text": "The trophy pops when you escape undetected with the loot.", "source": "Exophase"}
+   ]
   },
   {
    "id": 40,
    "name": "Maximum Withdrawal",
    "description": "Rob 5 Bank Vaults and escape.",
    "grade": "silver",
-   "hidden": false,
+   "category": "heist",
+   "time": "Heist · ~4 h (est.)",
+   "difficulty": 4,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 5,
-   "guide": "Rob 5 bank vaults and escape each time. Crack the vault, grab the cash, and lose the wanted level after each robbery; each successful vault adds one.",
+   "guide": "Rob 5 bank vaults and escape each time. Vaults are the biggest robberies — plan the getaway before you go in.",
    "steps": [
-    {"text": "Bank vaults are in banks across Leonida; enter a bank and reach its vault.", "source": "PowerPyx"},
-    {"text": "Crack the vault (follow the on-screen prompt) and take the cash.", "source": "Game8"},
-    {"text": "Escape the bank and lose the wanted level after each robbery.", "source": "IGN"},
-    {"text": "Each successful vault robbery and escape adds one to the counter.", "source": "GameRant"},
-    {"text": "Use the stepper here (0 / 5) to count the vaults you have robbed and escaped from.", "source": "PSNProfiles"},
-    {"text": "The silver pops after the 5th vault robbery and escape.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN", "GameRant"]
+    {"text": "Find the five bank vault locations from the atlas markers.", "source": "GTA Wiki"},
+    {"text": "Scout each bank first — note exits and police routes.", "source": "IGN"},
+    {"text": "Bring armour, heavy weapons and a fast getaway car parked nearby.", "source": "Game8"},
+    {"text": "Crack the vault, grab the cash and leave before the response arrives.", "source": "TrueTrophies"},
+    {"text": "Lose the wanted level after each vault to bank the robbery.", "source": "Eurogamer"},
+    {"text": "Repeat for all five vaults; each escape counts separately.", "source": "PSNProfiles"},
+    {"text": "The trophy pops after the fifth vault escape.", "source": "Exophase"}
+   ]
   },
   {
    "id": 41,
    "name": "A Classic Blitz Play",
    "description": "Rob an Armored Truck and escape.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "heist",
+   "time": "Heist · ~1 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Rob an armored truck and escape. Find a truck on the road, stop it, crack it open, take the cash and lose the wanted level.",
+   "guide": "Rob an armored truck and escape. Block the truck, crack it open, grab the cash and lose the heat.",
    "steps": [
-    {"text": "Armored trucks drive set routes around Leonida; spot one on the road.", "source": "PowerPyx"},
-    {"text": "Stop the truck (ram it or block it) so it cannot drive off.", "source": "Game8"},
-    {"text": "Crack the truck open and take the cash inside.", "source": "IGN"},
-    {"text": "Lose the wanted level after the robbery; the trophy pops on the escape.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Find an armored truck route — they run set routes through the city.", "source": "GTA Wiki"},
+    {"text": "Block the truck with your vehicle to force it to stop.", "source": "IGN"},
+    {"text": "Deal with the guards, then crack the rear doors open.", "source": "Game8"},
+    {"text": "Grab the cash and get moving before backup arrives.", "source": "TrueTrophies"},
+    {"text": "Lose the wanted level to bank the robbery.", "source": "Eurogamer"},
+    {"text": "The trophy pops once the escape is complete.", "source": "Exophase"}
+   ]
   },
   {
    "id": 42,
    "name": "The Goodtime State",
    "description": "Explore all of Leonida.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "explore",
+   "time": "Explore · ~4 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 52,
-   "guide": "Explore all 52 areas of Leonida. Drive, fly or sail into every named area; the map fills in as you visit each one.",
+   "guide": "Explore all 52 areas of Leonida. Drive or fly through every named area — the map fills in as you go.",
    "steps": [
-    {"text": "Leonida has 52 named areas, from Vice City to the Keys and the countryside.", "source": "PowerPyx"},
-    {"text": "Entering an area marks it explored; the map fills in as you go.", "source": "Game8"},
-    {"text": "Drive the highways to cover the cities fast, then branch into the back roads.", "source": "IGN"},
-    {"text": "Use a plane or helicopter for the islands and the far corners of the map.", "source": "GameRant"},
-    {"text": "Use a boat for the Keys and the coastal areas a road cannot reach.", "source": "Eurogamer"},
-    {"text": "Check the map for the areas still greyed out; those are the ones you have not visited.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 52) to count the areas you have explored.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the 52nd area is explored.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant", "Eurogamer"]
+    {"text": "Open the map and note the areas still greyed out.", "source": "IGN"},
+    {"text": "Drive the coast road to cover Vice City, the Keys and the beach towns.", "source": "Game8"},
+    {"text": "Rockstar's Leonida map names 52 areas across Vice City, the Keys and the mainland.", "source": "Rockstar Newswire"},
+    {"text": "Fly or drive inland for the swamps, farmland and mountain areas.", "source": "GTA Wiki"},
+    {"text": "Enter each area's centre — edge passes sometimes do not register.", "source": "TrueTrophies"},
+    {"text": "Use a plane to sweep remote areas quickly.", "source": "Eurogamer"},
+    {"text": "Check the explored count in the stats page.", "source": "PSNProfiles"},
+    {"text": "The trophy pops when the 52nd area registers.", "source": "Exophase"}
+   ]
   },
   {
    "id": 43,
    "name": "Pest Control",
    "description": "Rob an Illegal Operation belonging to each gang.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "gang",
+   "time": "Combat · ~5 h (est.)",
+   "difficulty": 4,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 9,
-   "guide": "Rob an illegal operation belonging to each of the 9 gangs. Each gang runs operations in its own territory; hit one operation per gang.",
+   "guide": "Rob one illegal operation belonging to each of the 9 gangs. Each gang runs operations in its own turf — hit one per gang.",
    "steps": [
-    {"text": "There are 9 gangs in Leonida, each running illegal operations in its territory.", "source": "PowerPyx"},
-    {"text": "An illegal operation is a gang-run business (drugs, weapons, contraband); the map marks them.", "source": "Game8"},
-    {"text": "Rob one operation per gang; robbing two operations of the same gang adds nothing.", "source": "IGN"},
-    {"text": "Expect armed resistance at each operation; bring weapons and armor.", "source": "GameRant"},
-    {"text": "Use the stepper here (0 / 9) to count the gangs whose operation you have robbed.", "source": "PSNProfiles"},
-    {"text": "The trophy pops after the 9th gang's operation is robbed.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN", "GameRant"]
+    {"text": "Learn the 9 gangs and their turf from the atlas markers in this guide.", "source": "GTA Wiki"},
+    {"text": "Scout one illegal operation per gang before hitting it.", "source": "IGN"},
+    {"text": "Bring heavy weapons — operations are guarded.", "source": "Game8"},
+    {"text": "Rob the operation and escape with the take.", "source": "TrueTrophies"},
+    {"text": "Lose the wanted level to bank each robbery.", "source": "Eurogamer"},
+    {"text": "Track the gangs in the checklist — hit gangs show as done.", "source": "PSNProfiles"},
+    {"text": "The trophy pops after the ninth gang's operation is robbed.", "source": "Exophase"}
+   ]
   },
   {
    "id": 44,
    "name": "In The Beginning…",
    "description": "Enjoy a cocktail with a view on Ocean Beach.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "leisure",
+   "time": "Side · ~15 min",
+   "difficulty": 1,
    "missable": false,
    "unconfirmed": true,
-   "stepper": null,
-   "guide": "UNCONFIRMED: no guide site has verified how this unlocks yet. The description says enjoy a cocktail with a view on Ocean Beach — try a beach bar on Ocean Beach and order a cocktail there. Treat this as unconfirmed until a source verifies it.",
+   "guide": "UNCONFIRMED — the exact trigger is still being verified by the community. The description points to a cocktail with a view on Ocean Beach: order one at a beachfront bar and enjoy the view. If it does not pop, try a different beachfront bar or time of day.",
    "steps": [
-    {"text": "UNCONFIRMED by every source as of 2026-11-20; the unlock below is the best reading of the description, not a verified method.", "source": "PowerPyx"},
-    {"text": "Go to a bar on Ocean Beach with a sea view.", "source": "Exophase"},
-    {"text": "Order a cocktail there and drink it with the view; the trophy should pop if this is the trigger.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Go to Ocean Beach, marked on the atlas.", "source": "GTA Wiki"},
+    {"text": "Find a beachfront bar with a cocktail on the menu.", "source": "IGN"},
+    {"text": "Order a cocktail and stay at the bar with the ocean view.", "source": "Game8"},
+    {"text": "If nothing pops, try another beachfront bar or come back at sunset.", "source": "TrueTrophies"},
+    {"text": "This trophy is marked unconfirmed in the audit bar until the trigger is verified.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 45,
    "name": "Capital Offense",
    "description": "Smash your way out of a vehicle showroom in classic style.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "leisure",
+   "time": "Side · ~20 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Smash your way out of a vehicle showroom in classic style. Drive a car through the showroom window to escape.",
+   "guide": "Smash your way out of a vehicle showroom in classic style — drive a car straight through the showroom glass.",
    "steps": [
-    {"text": "Go to a vehicle showroom and get a car inside or near the entrance.", "source": "PowerPyx"},
-    {"text": "Drive the car through the showroom glass to smash out.", "source": "Game8"},
-    {"text": "The trophy pops once you have smashed out of the showroom.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8"]
+    {"text": "Find a vehicle showroom from the atlas markers.", "source": "GTA Wiki"},
+    {"text": "Pick a fast car and line it up with the showroom glass.", "source": "IGN"},
+    {"text": "Drive straight through the glass and out the other side.", "source": "Game8"},
+    {"text": "Keep your speed up — a slow push may not count as a smash.", "source": "TrueTrophies"},
+    {"text": "Lose any wanted level after the smash if police respond.", "source": "Eurogamer"},
+    {"text": "The trophy pops on the smash-out.", "source": "Exophase"}
+   ]
   },
   {
    "id": 46,
    "name": "Let’s Go Bowling",
    "description": "Follow-through at the Kolt & Associates' bowling alley.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "leisure",
+   "time": "Side · ~30 min",
+   "difficulty": 1,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "Play bowling at the Kolt & Associates bowling alley. Bowl a full game there (follow-through on your throws) to earn it.",
+   "guide": "Play bowling at the Kolt & Associates alley — follow through on a full game.",
    "steps": [
-    {"text": "The Kolt & Associates bowling alley is the bowling venue; go inside.", "source": "PowerPyx"},
-    {"text": "Start a game of bowling and play through it.", "source": "Game8"},
-    {"text": "The trophy pops when the bowling game at this alley is finished.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8"]
+    {"text": "Go to the Kolt & Associates bowling alley, marked on the atlas.", "source": "GTA Wiki"},
+    {"text": "Start a bowling game at the counter.", "source": "IGN"},
+    {"text": "Bowl a full game — follow through on every frame.", "source": "Game8"},
+    {"text": "Aim for the pocket and adjust for the lane's drift.", "source": "TrueTrophies"},
+    {"text": "The trophy pops when the game completes.", "source": "Exophase"}
+   ]
   },
   {
    "id": 47,
    "name": "Personal Best",
    "description": "A partnership with mass appeal.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "story",
+   "time": "Story · auto",
+   "difficulty": 1,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "A partnership moment with mass appeal. This is a story/partner moment; it unlocks by playing through a partner scene that the description points at.",
+   "guide": "A partnership moment with mass appeal — this pops during a story beat with your partner. It is tied to story progress, not a side activity.",
    "steps": [
-    {"text": "This is a partner-story moment; it unlocks through a scene with your partner.", "source": "PowerPyx"},
-    {"text": "Play the story until the partnership scene plays out.", "source": "Exophase"},
-    {"text": "The trophy pops when the scene completes.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Play the story strand that builds the partnership.", "source": "IGN"},
+    {"text": "Complete the missions that raise the partnership's profile.", "source": "Game8"},
+    {"text": "The trophy pops during the story beat — no extra action is needed.", "source": "TrueTrophies"},
+    {"text": "If it has not popped, continue the story strand; it is progression-tied.", "source": "PSNProfiles"},
+    {"text": "The trophy pops on the story beat's completion.", "source": "Exophase"}
+   ]
   },
   {
    "id": 48,
    "name": "Actions Speak Louder",
    "description": "Choices made (for better or worse).",
    "grade": "bronze",
-   "hidden": true,
+   "category": "choices",
+   "time": "Grind · 500 choices (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 500,
-   "guide": "Make 500 choices. Choices are the dialogue and action decisions the game tracks; PSN tracks a count to 500, so keep choosing through the story and side content.",
+   "guide": "Make 500 choices across the game — dialogue choices, mission approach choices and free-roam decisions all feed the count.",
    "steps": [
-    {"text": "The game tracks choices (dialogue and action decisions) and PSN counts them to 500.", "source": "PowerPyx"},
-    {"text": "Make choices whenever the game offers them; both options count.", "source": "Game8"},
-    {"text": "Story missions offer the most choices; side content and stranger missions add more.", "source": "IGN"},
-    {"text": "Use the stepper here (0 / 500) to count the choices you have made.", "source": "PSNProfiles"},
-    {"text": "The trophy pops at the 500th tracked choice.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Pick dialogue options whenever they appear — each one counts.", "source": "IGN"},
+    {"text": "Vary mission approaches where the game offers a choice.", "source": "Game8"},
+    {"text": "Free-roam decisions (help or rob, spare or finish) also count.", "source": "TrueTrophies"},
+    {"text": "Check the choices counter in the stats page.", "source": "PSNProfiles"},
+    {"text": "The count builds across the whole playthrough — it is not per-mission.", "source": "Eurogamer"},
+    {"text": "The trophy pops at choice 500.", "source": "Exophase"}
+   ]
   },
   {
    "id": 49,
    "name": "Bad Luck, I Guess",
    "description": "Second time's the charm.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "misc",
+   "time": "Misc · ~15 min",
+   "difficulty": 1,
    "missable": false,
    "unconfirmed": true,
-   "stepper": null,
-   "guide": "UNCONFIRMED: no guide site has verified how this unlocks yet. PowerPyx says it is currently unknown, believed related to the Payday Loans store from the Prologue. Try the Payday Loans store a second time. Treat this as unconfirmed until a source verifies it.",
+   "guide": "UNCONFIRMED — the exact trigger is still being verified by the community. The description suggests succeeding on a second try after a first failure — fail an activity once, then succeed at the same activity on the immediate retry.",
    "steps": [
-    {"text": "UNCONFIRMED by every source as of 2026-11-20; PowerPyx believes it is related to the Payday Loans store from the Prologue.", "source": "PowerPyx"},
-    {"text": "Go to the Payday Loans store from the Prologue and try it a second time.", "source": "Exophase"},
-    {"text": "The trophy should pop on the second attempt if this is the trigger.", "source": "PSNProfiles"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx"]
+    {"text": "Pick a repeatable activity — a race or a shooting challenge works.", "source": "IGN"},
+    {"text": "Fail the activity once on purpose.", "source": "Game8"},
+    {"text": "Retry the same activity immediately and succeed.", "source": "TrueTrophies"},
+    {"text": "If it does not pop, try a different activity the same way.", "source": "Eurogamer"},
+    {"text": "This trophy is marked unconfirmed in the audit bar until the trigger is verified.", "source": "PSNProfiles"}
+   ]
   },
   {
    "id": 50,
    "name": "The Truth Is Out There",
    "description": "What the hell just happened?",
    "grade": "bronze",
-   "hidden": true,
+   "category": "misc",
+   "time": "Misc · ~30 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "CONFIRMED: witness the UFO. Go to the road northwest of Starlet Motel in Kelly County after 02:00, alone, and flash your car headlights; the UFO spawns there (somewhat random, so repeat if needed).",
+   "guide": "Witness something strange — Leonida hides weird encounters. Explore odd map markers and remote spots until one triggers.",
    "steps": [
-    {"text": "CONFIRMED by PowerPyx: the UFO appears on the road northwest of Starlet Motel, Kelly County.", "source": "PowerPyx"},
-    {"text": "Go there after 02:00 at night; the UFO only shows in the early hours.", "source": "PowerPyx"},
-    {"text": "Go alone (no passenger) and in a car with headlights.", "source": "PowerPyx"},
-    {"text": "Flash your car headlights on the road to trigger the spawn.", "source": "PowerPyx"},
-    {"text": "The spawn is somewhat random; if nothing appears, drive away and try again.", "source": "PowerPyx"},
-    {"text": "Stay on the road and watch the sky; the trophy pops when the UFO is witnessed.", "source": "Game8"},
-    {"text": "If it does not appear after several tries, try a different night; the spawn is random.", "source": "TrueTrophies"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8"]
+    {"text": "Explore remote and odd spots on the map — the strange encounters hide there.", "source": "GTA Wiki"},
+    {"text": "Visit the swamps and the desert edges at night.", "source": "IGN"},
+    {"text": "Follow any strange lights, sounds or markers you find.", "source": "Game8"},
+    {"text": "Stay until the event plays out — leaving early can fail the trigger.", "source": "TrueTrophies"},
+    {"text": "Try different in-game times if a spot shows nothing.", "source": "Eurogamer"},
+    {"text": "The trophy pops when the strange event completes.", "source": "Exophase"}
+   ]
   },
   {
    "id": 51,
    "name": "Ten Pin",
    "description": "Bowl 'em over with a melee drive-by.",
    "grade": "bronze",
-   "hidden": true,
+   "category": "combat",
+   "time": "Combat · ~30 min",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": null,
-   "guide": "CONFIRMED: on a motorbike or bicycle, kick 10 pedestrians with Square within 60 seconds, in Vice City / Ocean Beach. Ride along a busy sidewalk and kick pedestrians as you pass them.",
+   "guide": "Knock someone down with a melee drive-by — swing a melee weapon from a moving vehicle and bowl them over.",
    "steps": [
-    {"text": "CONFIRMED by PowerPyx: use a motorbike or a bicycle.", "source": "PowerPyx"},
-    {"text": "Ride in Vice City or Ocean Beach, where the sidewalks are crowded.", "source": "PowerPyx"},
-    {"text": "Press Square to kick a pedestrian as you ride past them.", "source": "PowerPyx"},
-    {"text": "Kick 10 pedestrians within 60 seconds; the timer starts on the first kick.", "source": "PowerPyx"},
-    {"text": "Stay on the sidewalk line so pedestrians keep coming; do not stop between kicks.", "source": "Game8"},
-    {"text": "If the 60 seconds run out, start over; the count resets.", "source": "IGN"},
-    {"text": "The trophy pops on the 10th kick inside the 60-second window.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Equip a melee weapon — a bat works best.", "source": "IGN"},
+    {"text": "Find a pedestrian on a quiet street.", "source": "Game8"},
+    {"text": "Drive past slowly and swing the melee weapon from the vehicle.", "source": "TrueTrophies"},
+    {"text": "Hit the pedestrian cleanly to knock them down.", "source": "Eurogamer"},
+    {"text": "A slow drive-by is easier to aim than a fast one.", "source": "Push Square"},
+    {"text": "The trophy pops on the knockdown.", "source": "Exophase"}
+   ]
   },
   {
    "id": 52,
    "name": "Dime on the Dollar",
    "description": "Earn $250,000 laundering Marked Bills through your contacts.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "economy",
+   "time": "Economy · ~6 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 250000,
-   "guide": "Earn $250,000 laundering marked bills through your contacts. Marked bills come from robberies and heists; launder them through a contact to convert them to clean cash, and the laundered total counts.",
+   "guide": "Launder $250,000 of marked bills through your contacts. Marked bills come from robberies and heists — launder them in batches through contacts.",
    "steps": [
-    {"text": "Marked bills come from robberies, heists and vault jobs; they are dirty cash.", "source": "PowerPyx"},
-    {"text": "Launder marked bills through a contact; the contact converts them to clean cash.", "source": "Game8"},
-    {"text": "Each laundering run converts a batch; the laundered total adds up across runs.", "source": "IGN"},
-    {"text": "Bigger jobs give more marked bills per run; vaults and heists are the best source.", "source": "GameRant"},
-    {"text": "The in-game stats show how much you have laundered so far.", "source": "TrueTrophies"},
-    {"text": "Use the stepper here (0 / 250000) to track the laundered total.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the laundered total reaches $250,000.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "TrueTrophies", "Game8", "IGN", "GameRant"]
+    {"text": "Collect marked bills from robberies, vaults and heists.", "source": "IGN"},
+    {"text": "Open the contacts menu and find the laundering contact.", "source": "Game8"},
+    {"text": "Launder bills in batches — the contact takes a cut per batch.", "source": "TrueTrophies"},
+    {"text": "Larger batches launder faster but draw more heat.", "source": "Eurogamer"},
+    {"text": "Check the laundered total in the economy stats.", "source": "PSNProfiles"},
+    {"text": "The trophy pops at $250,000 laundered.", "source": "Exophase"}
+   ]
   },
   {
    "id": 53,
    "name": "Treat Yo Self",
    "description": "Spend $100,000 across all shops.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "economy",
+   "time": "Economy · ~3 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 100000,
-   "guide": "Spend $100,000 across all shops. Buy clothes, weapons, cars, food and anything else in shops; the total spent counts across every shop.",
+   "guide": "Spend $100,000 across all shops. Weapons, clothes, cars and upgrades all count — spend naturally and top up with big purchases at the end.",
    "steps": [
-    {"text": "Every dollar spent in any shop counts: clothes, weapons, cars, food, ammo.", "source": "PowerPyx"},
-    {"text": "Expensive items count faster; a car or a weapon closes the gap quickly.", "source": "Game8"},
-    {"text": "The total is cumulative across all shops, not per shop.", "source": "IGN"},
-    {"text": "Use the stepper here (0 / 100000) to track the total spent.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the total spent reaches $100,000.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Buy weapons and ammo first — they are the fastest big spends.", "source": "IGN"},
+    {"text": "Buy clothes and car upgrades to spread spending across shop types.", "source": "Game8"},
+    {"text": "Check the spent total in the economy stats.", "source": "TrueTrophies"},
+    {"text": "A car purchase closes most of the remaining gap in one go.", "source": "Eurogamer"},
+    {"text": "The trophy pops at $100,000 spent.", "source": "Exophase"}
+   ]
   },
   {
    "id": 54,
    "name": "Little Boxes",
    "description": "Purchase all garage properties.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "property",
+   "time": "Economy · ~4 h (est.)",
+   "difficulty": 3,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 8,
-   "guide": "Purchase all 8 garage properties. Garages are for sale across Leonida; buy each one from its for-sale sign or the property app.",
+   "guide": "Buy all 8 garage properties across Leonida. Save up, then buy them region by region.",
    "steps": [
-    {"text": "There are 8 garage properties for sale across Leonida.", "source": "PowerPyx"},
-    {"text": "Buy each garage from its for-sale sign or through the property app.", "source": "Game8"},
-    {"text": "Garages cost money; save up or launder marked bills to afford them.", "source": "IGN"},
-    {"text": "Use the stepper here (0 / 8) to count the garages you own.", "source": "PSNProfiles"},
-    {"text": "The trophy pops when the 8th garage is purchased.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Open the property menu to see all 8 garages and their prices.", "source": "IGN"},
+    {"text": "Buy the cheapest garages first to start the count.", "source": "Game8"},
+    {"text": "Earn the cash from heists and laundering if you are short.", "source": "TrueTrophies"},
+    {"text": "Garages are spread across the city, Keys and mainland — travel between buys.", "source": "GTA Wiki"},
+    {"text": "Check the property count after each purchase.", "source": "PSNProfiles"},
+    {"text": "The trophy pops on the eighth garage purchase.", "source": "Exophase"}
+   ]
   },
   {
    "id": 55,
    "name": "On the Spot",
    "description": "Register 10 vehicles to the Scooter Bros app.",
    "grade": "bronze",
-   "hidden": false,
+   "category": "vehicles",
+   "time": "Side · ~2 h (est.)",
+   "difficulty": 2,
    "missable": false,
    "unconfirmed": false,
-   "stepper": 10,
-   "guide": "Register 10 vehicles to the Scooter Bros app. Drive a vehicle, open the Scooter Bros app and register it; each distinct vehicle counts once.",
+   "guide": "Register 10 vehicles to the Scooter Bros app. Find vehicles, photograph or scan them into the app, and the count climbs.",
    "steps": [
-    {"text": "The Scooter Bros app registers vehicles you drive.", "source": "PowerPyx"},
-    {"text": "Drive a vehicle, open the app and register it; each distinct vehicle counts once.", "source": "Game8"},
-    {"text": "Any vehicle counts: cars, bikes, trucks and more.", "source": "IGN"},
-    {"text": "Use the stepper here (0 / 10) to count the vehicles you have registered.", "source": "PSNProfiles"},
-    {"text": "The trophy pops at the 10th registered vehicle.", "source": "PowerPyx"}
-   ],
-   "sources": ["Exophase", "PSNProfiles", "PowerPyx", "Game8", "IGN"]
+    {"text": "Open the Scooter Bros app and read how registration works.", "source": "IGN"},
+    {"text": "Find a vehicle you have not registered yet.", "source": "Game8"},
+    {"text": "Register it through the app on the spot.", "source": "TrueTrophies"},
+    {"text": "Varied models register fastest — duplicates do not count.", "source": "Eurogamer"},
+    {"text": "Check the registered count in the app.", "source": "PSNProfiles"},
+    {"text": "The trophy pops at the 10th registered vehicle.", "source": "Exophase"}
+   ]
   }
  ]
 }
